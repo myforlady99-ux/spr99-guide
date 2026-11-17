@@ -1,0 +1,627 @@
+<title>คู่มือศึกษาสินค้า SPR99</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">
+<style id="page-style">
+/* Layout: แอปมือถือ — หัวเว็บติดบน, แท็บล่าง (สินค้า / โปรโมชั่น), หน้าสินค้าเรียง ภาพ → สรุป 3 ข้อ → โปสเตอร์ → หัวข้อพับเปิดได้ */
+:root{
+  --bg:#f5f3fa; --surface:#ffffff; --surface-2:#eee9f8; --stage:#e7e0f7; --fg:#211a33; --muted:#655d7a; --line:#e1dbee;
+  --accent:#6b46d9; --accent-2:#8d6ff0; --accent-fg:#ffffff; --accent-soft:#ece5fe; --accent-ink:#4b2db0;
+  --gold:#a37a2c; --gold-soft:#f7eedb;
+  --good:#17845a; --good-soft:#dff3ea; --warn:#a2610b; --warn-soft:#fbefd9; --off:#7a7489; --off-soft:#ecebf0; --agri:#2f8a55;
+  --shadow:0 1px 2px rgb(33 26 51 / .05),0 10px 28px -14px rgb(75 45 176 / .22);
+  --f-display:"Anuphan","IBM Plex Sans Thai",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans Thai","Anuphan",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --nav-h:64px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#130f1d; --surface:#1c162a; --surface-2:#251d37; --stage:#2a2143; --fg:#efebf8; --muted:#a8a1bd; --line:#30284a;
+  --accent:#a78cff; --accent-2:#8e70f4; --accent-fg:#150e29; --accent-soft:#2c2250; --accent-ink:#cdbfff;
+  --gold:#ddbd7f; --gold-soft:#33291a;
+  --good:#5fd3a0; --good-soft:#163a2c; --warn:#f0b65c; --warn-soft:#3b2b12; --off:#9a94aa; --off-soft:#2a2636; --agri:#6fcf93;
+  --shadow:0 1px 2px rgb(0 0 0 / .3),0 12px 30px -16px rgb(0 0 0 / .7); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#130f1d; --surface:#1c162a; --surface-2:#251d37; --stage:#2a2143; --fg:#efebf8; --muted:#a8a1bd; --line:#30284a;
+  --accent:#a78cff; --accent-2:#8e70f4; --accent-fg:#150e29; --accent-soft:#2c2250; --accent-ink:#cdbfff;
+  --gold:#ddbd7f; --gold-soft:#33291a;
+  --good:#5fd3a0; --good-soft:#163a2c; --warn:#f0b65c; --warn-soft:#3b2b12; --off:#9a94aa; --off-soft:#2a2636; --agri:#6fcf93;
+  --shadow:0 1px 2px rgb(0 0 0 / .3),0 12px 30px -16px rgb(0 0 0 / .7); color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:1rem;line-height:1.75;-webkit-font-smoothing:antialiased;-webkit-tap-highlight-color:transparent}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+h1,h2,h3{font-family:var(--f-display);line-height:1.3;text-wrap:balance;margin:0}
+p{margin:0}
+button,input,textarea,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.gutter{padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:900px;margin:0 auto}
+.muted{color:var(--muted)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:saturate(1.4) blur(12px);-webkit-backdrop-filter:saturate(1.4) blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;gap:10px;min-height:62px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0;flex:1;text-decoration:none;color:inherit}
+.brand img{height:40px;width:auto;flex:none}
+.brand .mk{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;background:linear-gradient(140deg,var(--accent-2),var(--accent));color:#fff;font-family:var(--f-display);font-weight:700}
+.brand span{display:flex;flex-direction:column;min-width:0;line-height:1.25}
+.brand b{font-family:var(--f-display);font-weight:700;font-size:1rem;letter-spacing:.12em;color:var(--accent-ink)}
+.brand small{font-size:.8rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.topnav{display:none;gap:4px}
+.topnav a{padding:8px 14px;border-radius:999px;text-decoration:none;color:var(--muted);font-weight:500;font-size:.95rem}
+.topnav a[aria-current="page"]{background:var(--accent-soft);color:var(--accent-ink)}
+.fs{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface);flex:none}
+.fs button{border:0;background:none;width:40px;height:38px;font-family:var(--f-display);font-weight:600;color:var(--fg)}
+.fs button+button{border-left:1px solid var(--line)}
+.fs button:disabled{opacity:.35}
+.edit-toggle{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--surface);border-radius:999px;height:38px;padding:0 12px;font-size:.875rem;font-weight:500;color:var(--muted);flex:none}
+.edit-toggle[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-fg)}
+.edit-toggle svg{width:16px;height:16px}
+
+/* bottom tabs */
+.tabbar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px)}
+.tabbar .wrap{display:grid;grid-template-columns:repeat(2,1fr);height:var(--nav-h)}
+.tabbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;text-decoration:none;color:var(--muted);font-size:.8rem;font-weight:500}
+.tabbar svg{width:23px;height:23px}
+.tabbar .pill{display:grid;place-items:center;width:60px;height:30px;border-radius:999px;transition:background .2s}
+.tabbar a[aria-current="page"]{color:var(--accent)}
+.tabbar a[aria-current="page"] .pill{background:var(--accent-soft)}
+main{padding-block:20px calc(var(--nav-h) + 48px + env(safe-area-inset-bottom,0px))}
+@media (min-width:760px){.topnav{display:flex}.tabbar{display:none}main{padding-block:32px 96px}}
+
+/* common */
+.stack{display:flex;flex-direction:column;gap:28px}
+.eyebrow{font-size:.78rem;font-weight:600;letter-spacing:.14em;color:var(--accent-ink);text-transform:uppercase}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 20px;border-radius:14px;border:1px solid transparent;font-weight:600;font-size:.97rem;text-decoration:none;white-space:nowrap;background:none}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-primary{background:var(--accent);color:var(--accent-fg)}
+.btn-ghost{background:var(--surface);border-color:var(--line);color:var(--fg)}
+.btn-soft{background:var(--accent-soft);color:var(--accent-ink)}
+.btn-danger{color:#c2334a;border-color:color-mix(in srgb,#c2334a 40%,transparent)}
+.btn-sm{min-height:38px;padding:0 13px;font-size:.875rem;border-radius:11px}
+.icon-btn{width:38px;height:38px;display:inline-grid;place-items:center;border-radius:11px;border:1px solid var(--line);background:var(--surface);color:var(--muted);flex:none}
+.icon-btn svg{width:17px;height:17px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.sec-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.sec-head h2{font-size:1.3rem;font-weight:600;display:flex;align-items:center;gap:10px}
+.dot{width:9px;height:9px;border-radius:50%;background:var(--accent);flex:none}
+.dot.agri{background:var(--agri)}
+.count{font-size:.9rem;color:var(--muted)}
+.empty{padding:36px 20px;text-align:center;color:var(--muted);border:1.5px dashed var(--line);border-radius:18px}
+.editbar{display:flex;flex-wrap:wrap;gap:8px;padding:12px;border-radius:16px;border:1.5px dashed color-mix(in srgb,var(--accent) 45%,var(--line));background:var(--accent-soft)}
+.editbar .lbl{width:100%;font-size:.8rem;font-weight:600;color:var(--accent-ink)}
+
+/* home */
+.intro h1{font-size:clamp(1.9rem,7vw,2.6rem);font-weight:700;margin-top:6px}
+.intro p{color:var(--muted);font-size:1.06rem;margin-top:8px;max-width:58ch}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.chip-s{display:inline-flex;align-items:center;gap:6px;padding:6px 13px;border-radius:999px;font-size:.875rem;font-weight:500;background:var(--surface);border:1px solid var(--line)}
+.chip-s.gold{background:var(--gold-soft);border-color:color-mix(in srgb,var(--gold) 35%,transparent);color:var(--gold)}
+.chip-s svg{width:15px;height:15px}
+.search{position:relative}
+.search svg{position:absolute;left:15px;top:50%;translate:0 -50%;width:19px;height:19px;color:var(--muted)}
+.search input{width:100%;height:52px;border-radius:15px;border:1px solid var(--line);background:var(--surface);padding:0 16px 0 46px;font-size:1rem}
+.search input:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (min-width:600px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:860px){.grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+.pcard{display:flex;flex-direction:column;text-decoration:none;color:inherit;overflow:hidden;transition:transform .15s ease,box-shadow .2s}
+.pcard:active{transform:scale(.98)}
+.pcard .ph{height:150px;display:flex;align-items:flex-end;justify-content:center;padding:14px 10px 10px;background:radial-gradient(closest-side at 50% 55%,color-mix(in srgb,var(--accent-2) 22%,transparent),transparent),var(--stage)}
+.pcard.agri .ph{background:radial-gradient(closest-side at 50% 55%,color-mix(in srgb,var(--agri) 22%,transparent),transparent),var(--stage)}
+.pcard .ph img{max-height:126px;max-width:88%;object-fit:contain;filter:drop-shadow(0 10px 10px rgb(0 0 0 / .25))}
+.pcard .pt{padding:12px 14px 14px;display:flex;flex-direction:column;gap:2px;min-width:0}
+.pcard b{font-family:var(--f-display);font-weight:600;font-size:1.02rem;line-height:1.35}
+.pcard small{color:var(--muted);font-size:.85rem;line-height:1.45}
+.noimg{display:grid;place-items:center;width:84px;height:84px;border-radius:20px;background:var(--surface);color:var(--muted)}
+.noimg svg{width:34px;height:34px}
+
+/* detail */
+.back{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.hero{overflow:hidden}
+.hero-stage{position:relative;height:250px;display:flex;align-items:flex-end;justify-content:center;padding:20px;background:radial-gradient(closest-side at 50% 58%,color-mix(in srgb,var(--accent-2) 30%,transparent),transparent),var(--stage)}
+.hero.agri .hero-stage{background:radial-gradient(closest-side at 50% 58%,color-mix(in srgb,var(--agri) 30%,transparent),transparent),var(--stage)}
+.hero-stage>img.main{max-height:212px;max-width:80%;object-fit:contain;filter:drop-shadow(0 18px 16px rgb(0 0 0 / .3))}
+.hero-stage .badge{position:absolute;top:14px;right:14px;width:84px;height:84px;object-fit:contain}
+.hero-info{padding:20px;display:flex;flex-direction:column;gap:8px}
+.hero-info h1{font-size:clamp(1.6rem,6vw,2.1rem);font-weight:700}
+.hero-info .th{color:var(--muted);font-size:1rem}
+.hero-info .desc{font-size:1.06rem;margin-top:4px;max-width:62ch}
+.specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:10px}
+.spec{padding:11px 13px;border-radius:13px;background:var(--surface-2);min-width:0}
+.spec .l{font-size:.8rem;color:var(--muted)}
+.spec .v{font-weight:600;font-size:.97rem;line-height:1.45;overflow-wrap:anywhere}
+@media (min-width:760px){.hero{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr)}.hero-stage{height:auto;min-height:340px;align-items:center}.hero-info{padding:28px}}
+.certs{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 22px;padding:14px;border-radius:16px;background:#ffffff;border:1px solid var(--line)}
+.certs img{height:56px;width:auto;max-width:100%;object-fit:contain}
+.summary{padding:20px;border-radius:18px;background:linear-gradient(180deg,var(--accent-soft),color-mix(in srgb,var(--accent-soft) 35%,var(--surface)));border:1px solid color-mix(in srgb,var(--accent) 25%,var(--line))}
+.summary h2{font-size:.85rem;font-weight:600;letter-spacing:.1em;color:var(--accent-ink);margin-bottom:12px}
+.summary ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:12px}
+.summary li{display:flex;gap:13px;align-items:flex-start;font-size:1.06rem}
+.summary li i{font-style:normal;flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:var(--accent-fg);font-family:var(--f-display);font-weight:700;font-size:.9rem;margin-top:1px}
+.gallery{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:6px;margin-inline:-4px;padding-inline:4px;scrollbar-width:thin}
+.poster{flex:0 0 72%;max-width:320px;scroll-snap-align:start;position:relative;border-radius:16px;overflow:hidden;border:1px solid var(--line);background:var(--surface-2);padding:0}
+.poster img{display:block;width:100%;height:auto}
+.poster .tools{position:absolute;left:8px;right:8px;bottom:8px;display:flex;gap:6px;justify-content:flex-end}
+.poster .tools .icon-btn{background:color-mix(in srgb,var(--surface) 92%,transparent)}
+.poster-add{flex:0 0 46%;max-width:200px;min-height:200px;scroll-snap-align:start;border:1.5px dashed color-mix(in srgb,var(--accent) 45%,var(--line));border-radius:16px;background:var(--accent-soft);color:var(--accent-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;font-weight:600;font-size:.9rem}
+.poster-add svg{width:26px;height:26px}
+.acc{display:flex;flex-direction:column;gap:10px}
+.sec{overflow:hidden}
+.sec-btn{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:none;border:0;padding:16px 16px 16px 20px;min-height:64px}
+.sec-btn span{flex:1;min-width:0;font-family:var(--f-display);font-weight:600;font-size:1.06rem;line-height:1.4}
+.sec-btn svg{width:20px;height:20px;color:var(--muted);transition:rotate .2s;flex:none}
+.sec.open .sec-btn svg{rotate:180deg}
+.sec-body{padding:0 20px 20px;display:flex;flex-direction:column;gap:14px}
+.sec-img{border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+.sec-img img{display:block;width:100%;height:auto}
+.prose{display:flex;flex-direction:column;gap:12px;font-size:1.02rem}
+.prose ul,.prose ol{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.prose li{display:flex;gap:12px;align-items:flex-start}
+.prose li>.mk{flex:none;margin-top:9px;width:8px;height:8px;border-radius:50%;background:var(--accent)}
+.prose ol>li>.mk{margin-top:1px;width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);display:grid;place-items:center;font-family:var(--f-display);font-weight:700;font-size:.85rem}
+.prose li>.ing{flex:none;width:46px;height:46px;border-radius:12px;background-color:#fff;background-repeat:no-repeat;background-size:auto 46px;border:1px solid var(--line)}
+.prose li>.tx{flex:1;min-width:0;display:flex;flex-direction:column}
+.prose .tt{font-weight:600;color:var(--fg)}
+.prose .dd{color:var(--muted)}
+.prose .sub{display:block;color:var(--muted);font-size:.95rem}
+.prose .sub b{color:var(--fg);font-weight:600}
+.prose strong{font-weight:600}
+.ph-fill{background:var(--warn-soft);color:var(--warn);border-radius:6px;padding:0 5px}
+.note{display:flex;gap:12px;padding:16px 18px;border-radius:16px;background:var(--gold-soft);border:1px solid color-mix(in srgb,var(--gold) 30%,transparent)}
+.note svg{width:20px;height:20px;color:var(--gold);flex:none;margin-top:4px}
+.note b{display:block;color:var(--gold);font-size:.9rem}
+.note p{font-size:.97rem}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pager a{display:flex;flex-direction:column;gap:2px;padding:14px 16px;text-decoration:none;color:inherit;min-width:0}
+.pager a.next{text-align:right}
+.pager small{color:var(--muted);font-size:.8rem}
+.pager b{font-family:var(--f-display);font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* promo */
+.ftabs{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding-bottom:2px}
+.ftabs::-webkit-scrollbar{display:none}
+.ftab{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 15px;font-size:.92rem;font-weight:500;color:var(--muted);white-space:nowrap}
+.ftab[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.ftab .n{opacity:.6;margin-left:5px}
+.promos{display:grid;grid-template-columns:1fr;gap:16px}
+@media (min-width:640px){.promos{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.promo{display:flex;flex-direction:column;overflow:hidden}
+.promo-img{position:relative;background:var(--surface-2);border:0;padding:0;display:block;width:100%}
+.promo-img img{display:block;width:100%;height:auto}
+.promo-top{position:relative;padding:22px 18px 18px;background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#fff}
+.promo.ended .promo-top{background:linear-gradient(135deg,#6f6a80,#8d889c)}
+.promo-top b{font-family:var(--f-display);font-weight:700;font-size:1.9rem;line-height:1.15;display:block;overflow-wrap:anywhere;padding-right:96px}
+.promo .status{position:absolute;top:12px;right:12px}
+.status{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:3px 10px;font-size:.78rem;font-weight:600;white-space:nowrap}
+.status::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.st-active{background:var(--good-soft);color:var(--good)}
+.st-soon{background:var(--warn-soft);color:var(--warn)}
+.st-ended{background:var(--off-soft);color:var(--off)}
+.promo-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:10px;flex:1}
+.promo-body h3{font-size:1.15rem;font-weight:600}
+.promo-body .d{color:var(--muted)}
+.period{display:flex;align-items:center;gap:8px;font-size:.9rem;color:var(--muted)}
+.period svg{width:16px;height:16px;flex:none}
+.code{display:flex;align-items:center;gap:10px;border:1.5px dashed color-mix(in srgb,var(--accent) 50%,var(--line));border-radius:13px;padding:6px 6px 6px 14px;background:var(--accent-soft)}
+.code span{flex:1;font-family:ui-monospace,Menlo,Consolas,monospace;font-weight:600;letter-spacing:.06em;color:var(--accent-ink);overflow-wrap:anywhere}
+.rel{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:12px;background:var(--surface-2);text-decoration:none;color:inherit;font-size:.9rem}
+.rel img{width:36px;height:36px;object-fit:contain}
+.rel span{flex:1;min-width:0}
+.rel svg{width:16px;height:16px;color:var(--muted)}
+details.cond summary{cursor:pointer;font-size:.9rem;font-weight:500;color:var(--accent-ink);list-style:none;display:flex;align-items:center;gap:6px}
+details.cond summary::-webkit-details-marker{display:none}
+details.cond summary svg{width:16px;height:16px;transition:rotate .2s}
+details.cond[open] summary svg{rotate:180deg}
+details.cond .prose{margin-top:8px;font-size:.93rem}
+
+/* save bar, sheet, lightbox, toast */
+.savebar{position:fixed;z-index:25;left:0;right:0;bottom:calc(var(--nav-h) + env(safe-area-inset-bottom,0px));padding-bottom:10px;pointer-events:none}
+.savebar .in{pointer-events:auto;display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--fg);color:var(--bg);border-radius:16px;padding:10px 10px 10px 16px;box-shadow:0 12px 30px -10px rgb(0 0 0 / .45)}
+.savebar .msg{flex:1 1 140px;font-size:.92rem;font-weight:500}
+.savebar .b-cancel{color:var(--bg);border-color:color-mix(in srgb,var(--bg) 35%,transparent)}
+.savebar .b-save{background:var(--accent-2);color:#fff}
+@media (min-width:760px){.savebar{bottom:max(20px,env(safe-area-inset-bottom,0px))}}
+.overlay{position:fixed;inset:0;z-index:40;background:rgb(18 12 34 / .55);display:flex;align-items:flex-end;justify-content:center;animation:fade .18s ease}
+.sheet{width:100%;max-width:640px;max-height:calc(100% - 24px - env(safe-area-inset-top,0px));display:flex;flex-direction:column;background:var(--surface);border-radius:22px 22px 0 0;animation:up .22s cubic-bezier(.2,.8,.2,1)}
+@media (min-width:760px){.overlay{align-items:center}.sheet{border-radius:22px;max-height:88vh}}
+.sheet-h{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:18px 20px 10px}
+.sheet-h h2{font-size:1.15rem;font-weight:600}
+.sheet-b{overflow-y:auto;padding:6px 20px 16px;display:flex;flex-direction:column;gap:16px}
+.sheet-f{display:flex;gap:10px;flex-wrap:wrap;padding:12px 20px calc(16px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line)}
+.sheet-f .sp{flex:1}
+.field{display:flex;flex-direction:column;gap:6px}
+.field label{font-size:.875rem;font-weight:600}
+.field .hint{font-size:.8rem;color:var(--muted)}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:11px 14px;font-size:1rem;line-height:1.6}
+.field textarea{min-height:110px;resize:vertical}
+.field input:focus,.field textarea:focus,.field select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-soft)}
+.imgfield{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.imgfield .pv{width:96px;height:96px;border-radius:14px;border:1px solid var(--line);background:var(--surface-2);display:grid;place-items:center;overflow:hidden;color:var(--muted)}
+.imgfield .pv img{width:100%;height:100%;object-fit:contain}
+.imgfield .pv svg{width:28px;height:28px}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.lb{position:fixed;inset:0;z-index:45;background:rgb(10 7 18 / .94);display:flex;flex-direction:column;animation:fade .18s ease}
+.lb-top{display:flex;justify-content:space-between;align-items:center;padding:calc(10px + env(safe-area-inset-top,0px)) max(12px,env(safe-area-inset-right,0px)) 6px max(16px,env(safe-area-inset-left,0px));color:#fff;font-size:.9rem}
+.lb-top .icon-btn{background:rgb(255 255 255 / .12);border-color:transparent;color:#fff}
+.lb-track{flex:1;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+.lb-track::-webkit-scrollbar{display:none}
+.lb-track figure{flex:0 0 100%;margin:0;scroll-snap-align:center;display:grid;place-items:center;padding:8px 12px calc(16px + env(safe-area-inset-bottom,0px))}
+.lb-track img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px}
+.toast{position:fixed;z-index:60;left:50%;translate:-50% 0;top:calc(74px + env(safe-area-inset-top,0px));background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:.92rem;font-weight:500;box-shadow:0 10px 24px -10px rgb(0 0 0 / .4);max-width:calc(100% - 32px);text-align:center;animation:fade .2s ease}
+footer{color:var(--muted);font-size:.85rem;text-align:center;max-width:60ch;margin:0 auto}
+@keyframes fade{from{opacity:0}}
+@keyframes up{from{transform:translateY(40px);opacity:.4}}
+.view{animation:fade .25s ease}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<div id="app"></div>
+<script type="application/json" id="state">{"meta":{"brand":"SPR99","sub":"คู่มือสินค้าสำหรับสมาชิก","kicker":"SUPPORT PEOPLE RICH","title":"คู่มือศึกษาสินค้า","intro":"แตะรูปสินค้าเพื่อเปิดอ่าน เริ่มจากสรุป 3 ข้อ แล้วแตะหัวข้อที่สนใจ","badge":"มาตรฐานฮาลาลทุกรายการ","footer":"ข้อมูลรวบรวมจากเอกสารผลิตภัณฑ์ของ SPR99 สำหรับใช้ศึกษาภายในกลุ่มสมาชิก โปรดตรวจสอบรายละเอียดล่าสุดจากฉลากสินค้าทุกครั้ง","logo":"assets/crown.webp","updated":"2026-11-15"},"cats":[{"id":"health","name":"สุขภาพและความงาม"},{"id":"agri","name":"เกษตร"}],"products":[{"id":"lively","cat":"health","name":"LIVELY Phyto Telo-Gena","th":"ไลฟ์ลี่ ไฟโต เทโล จีน่า","eyebrow":"ผลิตภัณฑ์เสริมอาหาร","desc":"ผลิตภัณฑ์เสริมอาหารชนิดผง ออกแบบมาเพื่อการดูแลร่างกายระดับเซลล์ โดยรวมเทคโนโลยี 5 อย่างและสารสกัดจากธรรมชาติมากกว่า 8 ชนิดไว้ในซองเดียว","img":"assets/lively.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ผงกรอกปาก"},{"label":"ขนาด","value":"3 กรัม ต่อซอง"},{"label":"จุดขายหลัก","value":"5 นวัตกรรม · 8 สารสกัด"},{"label":"มาตรฐาน","value":"ฮาลาล"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["แนวคิดหลักคือการดูแล “เทโลเมียร์” ซึ่งเป็นส่วนปลายของโครโมโซมที่สั้นลงตามวัย","มี 5 เทคโนโลยีที่ช่วยเรื่องการดูดซึมและการทำงานร่วมกันของสารสกัด","ทานง่าย ฉีกซองเทเข้าปากได้เลย ครบจบใน 1 ซอง"],"sections":[{"id":"s1","title":"เทโลเมียร์คืออะไร","body":"เทโลเมียร์ (Telomere) คือส่วนปลายของโครโมโซม ทำหน้าที่คล้ายปลอกหุ้มปลายเชือกรองเท้า คอยปกป้องสารพันธุกรรมภายในเซลล์ ทุกครั้งที่เซลล์แบ่งตัว เทโลเมียร์จะสั้นลงเล็กน้อย และยังสั้นลงได้จากความเครียด อนุมูลอิสระ และความเสียหายของดีเอ็นเอ การสั้นลงของเทโลเมียร์จึงเป็นหนึ่งในปัจจัยที่เกี่ยวข้องกับความเสื่อมของเซลล์ตามวัย LIVELY ถูกพัฒนาขึ้นจากแนวคิดการดูแลเทโลเมียร์นี้"},{"id":"s2","title":"นวัตกรรมใน LIVELY","body":"- **FIR**\n  คืออะไร: Far Infrared Ray คลื่นพลังงานความร้อนลึก ที่แทรกซึมเข้าสู่เซลล์และกระตุ้นการสั่นสะเทือนของโมเลกุล\n  คุณสมบัติ: ทำให้โมเลกุลของสารสำคัญมีขนาดเล็กลง ร่างกายจึงดูดซึมได้ง่ายและรวดเร็วขึ้น\n- **TeloAge™**\n  คืออะไร: เทคโนโลยีที่ออกแบบมาเพื่อการดูแลร่างกายในระดับเซลล์\n  คุณสมบัติ: ปรับสมดุลพลังงานระดับเซลล์\n- **LipoTect™** ช่วยให้สารสำคัญดูดซึมได้ดีและออกฤทธิ์ได้เต็มที่\n- **AbsoMaxx™** เพิ่มประสิทธิภาพการดูดซึม\n- **Telo99™** ดูแลและปกป้องเทโลเมียร์\n- **Nutrient Synergy** ผสานสารสกัดธรรมชาติเข้มข้นให้ทำงานเสริมกัน"},{"id":"s3","title":"ส่วนประกอบสำคัญ 8 ชนิด","body":"- **สารสกัดจากเมล่อน (SOD Melon)** อุดมด้วยสารต้านอนุมูลอิสระ ช่วยปกป้องผิวจากแสงแดดและลดการเสื่อมของเซลล์\n- **โคเอนไซม์ Q10** เกี่ยวข้องกับการสร้างพลังงานของเซลล์\n- **สารสกัดใบแปะก๊วย** ช่วยเรื่องการไหลเวียนเลือด บำรุงสมองและความจำ\n- **สารสกัดจากเปลือกองุ่น** สารต้านอนุมูลอิสระ ช่วยบำรุงผิวพรรณ\n- **สารสกัดจากเปลือกสน** สารต้านอนุมูลอิสระสูง เสริมการทำงานของวิตามินซีและอี\n- **สารสกัดโกจิเบอร์รี่** อุดมด้วยวิตามินและแร่ธาตุ ช่วยบำรุงสายตาและผิวพรรณ\n- **สารสกัดซีบัคธอร์น** มีวิตามินซีสูงและโอเมก้า 7 ช่วยบำรุงผิวให้ชุ่มชื้น\n- **สารสกัดจากเมล็ดองุ่น** มีสาร OPCs ในกลุ่มไบโอฟลาโวนอยด์ ช่วยต้านอนุมูลอิสระ","sprite":"assets/ingredients-lively.webp","spriteN":8},{"id":"s4","title":"จุดเด่น 5 ด้าน","body":"1. **ดูแลร่างกายระดับเซลล์** ปกป้องและดูแลเทโลเมียร์ ลดความเสื่อมของเซลล์\n2. **เสริมเกราะป้องกัน** ช่วยเพิ่มสารต้านอนุมูลอิสระให้ร่างกาย\n3. **ผิวพรรณเปล่งปลั่ง** ผิวชุ่มชื้น กระชับ ยืดหยุ่น\n4. **เพิ่มความสดชื่น** ช่วยให้ร่างกายมีพลัง ลดความเหนื่อยล้า\n5. **ดูแลสุขภาพองค์รวม** ดูแลระบบไหลเวียน สมอง ความจำ และการนอนหลับ"},{"id":"s5","title":"เหมาะสำหรับ","body":"- ผู้ที่ต้องการดูแลตัวเองให้ดูอ่อนเยาว์\n- ผู้ที่อ่อนเพลียและรู้สึกพลังงานต่ำ\n- ผู้ที่ต้องการเสริมภูมิคุ้มกัน\n- ผู้ที่ต้องการดูแลผิวพรรณ\n- ผู้ที่มีปัญหาการนอนและความเครียด"},{"id":"s6","title":"วิธีรับประทาน","body":"ฉีกซองแล้วเทผงเข้าปากได้ทันที ไม่ต้องผสมน้ำ [ระบุจำนวนซองต่อวันตามฉลาก]"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":["assets/poster-08.webp","assets/poster-09.webp","assets/poster-10.webp","assets/poster-11.webp"]},{"id":"lady","cat":"health","name":"Love For Lady","th":"เลิฟ ฟอร์ เลดี้","eyebrow":"ผลิตภัณฑ์เสริมอาหาร","desc":"ผลิตภัณฑ์เสริมอาหารสำหรับผู้หญิงโดยเฉพาะ ผสานสารสกัดจากธรรมชาติ 13 ชนิด ดูแลจากภายในสู่ภายนอกใน 3 ระดับ","img":"assets/lady.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"แคปซูล 600 มก."},{"label":"บรรจุ","value":"30 แคปซูล ต่อกล่อง"},{"label":"มาตรฐาน","value":"GMP · HACCP · ฮาลาล"},{"label":"เลข อย.","value":"24-1-09957-5-0165"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["ดูแลผู้หญิง 3 ระดับ คือ ปรับสมดุลภายใน ปกป้องผิวและภูมิคุ้มกัน และฟื้นฟูความอ่อนเยาว์","มีส่วนประกอบ 13 ชนิด นำโดยโสม ตังกุย และไนอะซินาไมด์","ทานวันละ 1 แคปซูล ก่อนนอนหรือตอนท้องว่าง"],"sections":[{"id":"s1","title":"ดูแล 3 ระดับ","body":"- **1. ปรับสมดุลภายใน**\n  ส่วนผสมสำคัญ: โสม, ตังกุย\n  จุดเด่น: ช่วยปรับสมดุลของร่างกายผู้หญิง บำรุงร่างกายจากภายใน\n- **2. ปกป้องผิวและภูมิคุ้มกัน**\n  ส่วนผสมสำคัญ: ยีสต์เบต้ากลูแคน, โรสแมรี่\n  จุดเด่น: ต้านอนุมูลอิสระ ช่วยให้ผิวดูสุขภาพดี\n- **3. ฟื้นฟูความอ่อนเยาว์**\n  ส่วนผสมสำคัญ: แอสตาแซนธิน, หญ้าหางม้า, วิตามินบี 3\n  จุดเด่น: บำรุงผม เล็บ และผิวพรรณให้ดูกระจ่างใส"},{"id":"s2","title":"ส่วนประกอบใน 1 แคปซูล (600 มก.)","body":"- **สารสกัดโสม**\n  70 มก.: Ginseng Extract\n- **สารสกัดตังกุย**\n  60 มก.: Dong Quai Extract Powder\n- **ไนอะซินาไมด์ 32.5%**\n  55 มก.: Niacinamide (วิตามินบี 3)\n- **โปรตีนถั่วเหลืองสกัด**\n  53 มก.: Isolated Soy Protein\n- **ยีสต์เบต้ากลูแคน 85%**\n  50 มก.: Yeast Beta-Glucan\n- **สารสกัดหญ้าหางม้า**\n  50 มก.: Horsetail Extract\n- **สารสกัดองุ่น**\n  50 มก.: Grape Extract\n- **สารสกัดโรสแมรี่**\n  50 มก.: Rosemary Extract\n- **สารสกัดอะเซโรลาเชอร์รี่**\n  26 มก.: Acerola Cherry Extract\n- **ผงเมล็ดยี่หร่าเทศ**\n  20 มก.: Fennel Powder (Seed)\n- **สารสกัดสาหร่ายฮีมาโตคอคคัส พลูวิเอลิส**\n  20 มก.: Haematococcus Pluvialis Extract (แหล่งแอสตาแซนธิน)\n- **เจลาตินบริโภคได้**\n  94.08 มก.: Edible Gelatin (เปลือกแคปซูล)\n- **ไทเทเนียมไดออกไซด์**\n  1.92 มก.: Titanium Dioxide (สีของเปลือกแคปซูล)","sprite":"assets/ingredients-lady.webp","spriteN":13},{"id":"s3","title":"วิธีรับประทาน 3 ขั้นตอน","body":"1. **ทาน 1 แคปซูล** วันละ 1 ครั้ง\n2. **ทานก่อนนอนหรือตอนท้องว่าง** เวลาที่แนะนำคือประมาณ 23:30 น.\n3. **ทานต่อเนื่อง** เพื่อให้ร่างกายดูดซึมได้ดีที่สุด"},{"id":"s4","title":"ผลลัพธ์จากภายในสู่ภายนอก","body":"- **สมดุลของร่างกาย**\n  กระบวนการ: ปรับสมดุล บำรุงระบบภายใน\n  สู่ภายนอก: ผิวสดใส เปล่งปลั่ง\n- **การดูแลภายใน**\n  กระบวนการ: ฟื้นฟูร่างกาย\n  สู่ภายนอก: สุขภาพดีขึ้น แข็งแรง\n- **สัญญาณแห่งวัย**\n  กระบวนการ: ต้านอนุมูลอิสระ ชะลอความเสื่อม\n  สู่ภายนอก: ผิวแข็งแรง ดูอ่อนเยาว์"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":["assets/poster-12.webp","assets/poster-13.webp","assets/poster-14.webp","assets/poster-15.webp","assets/poster-16.webp"]},{"id":"colla","cat":"health","name":"LOVE COLLA","th":"เลิฟ คอลล่า คอลลาเจนยุคใหม่","eyebrow":"ผลิตภัณฑ์เสริมอาหาร","desc":"คอลลาเจนเปปไทด์จากปลา ผสานนวัตกรรม FIR ที่ช่วยให้โมเลกุลมีขนาดเล็ก ร่างกายจึงดูดซึมและนำไปใช้ได้ดี ไม่มีน้ำตาล","img":"assets/colla.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ผงชงดื่ม แบบซอง"},{"label":"บรรจุ","value":"10 ซอง ต่อกล่อง"},{"label":"คอลลาเจน","value":"10,000 มก. ต่อซอง"},{"label":"น้ำตาล","value":"0%"},{"label":"มาตรฐาน","value":"ฮาลาล"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["จุดต่างคือนวัตกรรม FIR ที่ทำให้โมเลกุลคอลลาเจนเล็กลง ดูดซึมได้ดี","คอลลาเจนจากปลา 10,000 มก. ต่อซอง รวม 100,000 มก. ต่อกล่อง","มีสารสกัดจากธรรมชาติมากกว่า 16 ชนิด และไม่มีน้ำตาล"],"sections":[{"id":"s1","title":"FIR คืออะไร","body":"FIR ย่อมาจาก Far Infrared Ray คือคลื่นพลังงานความร้อนลึกที่กระตุ้นการสั่นสะเทือนของโมเลกุล ทำให้โมเลกุลแตกตัวมีขนาดเล็กลง ร่างกายจึงดูดซึมได้ง่ายและรวดเร็วขึ้น"},{"id":"s2","title":"นวัตกรรม FIR ทำงานอย่างไร","body":"- **1. คลื่น FIR** ให้พลังงานความร้อนลึกกับโมเลกุลคอลลาเจน\n- **2. โมเลกุลเล็กลง** โมเลกุลสั่นสะเทือนและแตกตัวจนมีขนาดเล็ก\n- **3. ดูดซึมง่าย** ร่างกายดูดซึมได้ง่ายและรวดเร็วขึ้น"},{"id":"s3","title":"เปรียบเทียบให้เห็นภาพ","body":"- **ขนาดโมเลกุล**\n  คอลลาเจนทั่วไป (ไม่มี FIR): โมเลกุลขนาดใหญ่\n  LOVE COLLA + FIR: โมเลกุลเล็กระดับจิ๋ว\n- **การดูดซึม**\n  คอลลาเจนทั่วไป (ไม่มี FIR): ผ่านได้น้อย ดูดซึมได้ยาก\n  LOVE COLLA + FIR: ผ่านได้ง่าย ดูดซึมเร็วและลึก\n- **การนำไปใช้**\n  คอลลาเจนทั่วไป (ไม่มี FIR): ร่างกายนำไปใช้ได้น้อย\n  LOVE COLLA + FIR: ร่างกายนำไปใช้ได้เต็มประสิทธิภาพ"},{"id":"s4","title":"ส่วนประกอบสำคัญ","body":"คอลลาเจนเปปไทด์จากปลา (Fish Collagen Peptide) 10,000 มก. ต่อซอง ผสานสารสกัดและสารอาหารอีก 12 ชนิด\n\n- ทับทิม\n- อะเซโรลาเชอร์รี่\n- มะขามป้อม\n- โรสฮิป\n- เมล็ดองุ่น\n- โกจิเบอร์รี่\n- สาหร่ายฮีมาโตคอคคัส\n- เปลือกสน\n- แอปเปิ้ล\n- แอล-กลูตาไธโอน\n- แอล-อาร์จินีน\n- โคเอนไซม์คิวเทน","sprite":"assets/ingredients-colla.webp","spriteN":12},{"id":"s5","title":"คุณสมบัติ 8 ด้าน","body":"1. **ดูแลผิวพรรณ** ช่วยให้ผิวดูใส เปล่งปลั่ง สุขภาพดี\n2. **ผิวดูกระจ่างใส** ช่วยให้สีผิวดูสม่ำเสมอ\n3. **ผิวชุ่มชื้น** ช่วยเพิ่มความชุ่มชื้นให้ผิวดูอิ่มน้ำ\n4. **กระชับผิว** ช่วยให้ผิวดูเรียบเนียน กระชับขึ้น\n5. **บำรุงเส้นผม** ช่วยให้เส้นผมดูแข็งแรง\n6. **บำรุงเล็บ** ช่วยให้เล็บดูแข็งแรง ไม่เปราะง่าย\n7. **บำรุงกระดูก** มีส่วนช่วยในการสร้างและคงสภาพของกระดูก\n8. **เสริมความแข็งแรงของร่างกาย** มีส่วนช่วยเสริมสร้างภูมิคุ้มกัน"},{"id":"s6","title":"เหมาะสำหรับผู้ที่มีปัญหาเหล่านี้","body":"- ผิวหมองคล้ำ ไม่กระจ่างใส\n- รูขุมขนกว้าง ผิวไม่เรียบเนียน\n- ริ้วรอยก่อนวัย ผิวไม่กระชับ\n- ผมแห้งเสีย เล็บเปราะ\n- ต้องการบำรุงกระดูกและข้อ"},{"id":"s7","title":"วิธีรับประทาน","body":"[ระบุวิธีชงและจำนวนซองต่อวันตามฉลาก]"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":["assets/poster-04.webp","assets/poster-05.webp","assets/poster-06.webp","assets/poster-07.webp"]},{"id":"coffee","cat":"health","name":"LOVER Coffee 39in1","th":"เลิฟเวอร์ คอฟฟี่","eyebrow":"กาแฟเพื่อสุขภาพ","desc":"กาแฟปรุงสำเร็จชนิดผง ใช้กาแฟอาราบิก้าจากบราซิล ผสมสมุนไพรและสารอาหาร รวม 39 คุณประโยชน์ในซองเดียว หอม อร่อย กลมกล่อม ไม่ใส่น้ำตาล","img":"assets/coffee.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"กาแฟผงชงดื่ม"},{"label":"บรรจุ","value":"10 ซอง × 15 กรัม"},{"label":"น้ำหนักสุทธิ","value":"150 กรัม"},{"label":"มาตรฐาน","value":"ฮาลาล"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["กาแฟเพื่อสุขภาพ 39 in 1 ดื่มง่ายได้ทุกวัน","ไม่ใส่น้ำตาล ไม่มีคอเลสเตอรอล พลังงานต่ำ","ส่วนผสมพิเศษคือเทียนดำ (Black Cumin) ร่วมกับเห็ดหลินจือ โสม และตังกุย"],"sections":[{"id":"s1","title":"ส่วนประกอบเด่น","body":"- **กาแฟอาราบิก้าจากบราซิล** ให้กลิ่นหอมและรสชาติกลมกล่อม\n- **ผงเทียนดำ (Black Cumin)** ส่วนผสมพิเศษ อุดมด้วยสารต้านอนุมูลอิสระ\n- **สารสกัดเห็ดหลินจือ** สมุนไพรบำรุงร่างกาย\n- **สารสกัดโสม** สมุนไพรบำรุงร่างกาย เพิ่มความสดชื่น\n- **สารสกัดตังกุย** สมุนไพรบำรุงร่างกาย\n- **ผงน้ำหญ้าข้าวสาลี** แหล่งใยอาหารจากธรรมชาติ\n- **แคลเซียม อะมิโน แอซิด คีเลต** แหล่งแคลเซียม บำรุงกระดูกและฟัน","sprite":"assets/ingredients-coffee.webp","spriteN":6},{"id":"s2","title":"จุดเด่น 5 ด้าน","body":"1. **ไม่มีน้ำตาล** ไม่ให้พลังงานส่วนเกิน เหมาะกับผู้ที่ควบคุมน้ำหนัก\n2. **ดูแลระบบขับถ่าย** มีใยอาหารจากธรรมชาติ\n3. **บำรุงสายตา** มีลูทีนและซีแซนทีนจากดอกดาวเรือง\n4. **แคลเซียมสูง** บำรุงกระดูกและฟัน\n5. **เพิ่มความสดชื่น** ดื่มแล้วกระปรี้กระเปร่า พลังงานพอเหมาะ"},{"id":"s3","title":"เหมาะสำหรับ","body":"- ผู้ที่ดื่มกาแฟเป็นประจำและใส่ใจสุขภาพ\n- ผู้ที่ต้องการลดน้ำตาล\n- ผู้ใหญ่และผู้สูงอายุที่ต้องการเสริมแคลเซียม"},{"id":"s4","title":"วิธีชง","body":"[ระบุปริมาณน้ำร้อนต่อ 1 ซองตามฉลาก]"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":["assets/poster-17.webp","assets/poster-18.webp","assets/poster-19.webp"]},{"id":"x2","cat":"health","name":"2X","th":"ทูเอ็กซ์ สูตรสมุนไพรเข้มข้น","eyebrow":"ผลิตภัณฑ์เสริมอาหาร","desc":"ผลิตภัณฑ์เสริมอาหารสำหรับคุณผู้ชาย รวมสมุนไพรและสารอาหาร 7 ชนิด เพื่อเสริมพลังและดูแลร่างกายให้พร้อมในทุกวัน","img":"assets/2x.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"เม็ด"},{"label":"บรรจุ","value":"10 เม็ด ต่อกล่อง"},{"label":"น้ำหนักสุทธิ","value":"12 กรัม"},{"label":"เลข อย.","value":"24-1-09957-5-0021"},{"label":"มาตรฐาน","value":"ฮาลาล"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["สินค้าสำหรับผู้ชาย สูตรสมุนไพรเข้มข้น","จำง่าย ๆ ว่า “7 พลัง จาก 7 ส่วนประกอบ”","บรรจุกล่องละ 10 เม็ด ได้รับมาตรฐานฮาลาล"],"sections":[{"id":"s1","title":"ส่วนประกอบ 7 ชนิด","body":"- **โสม** ลดความอ่อนเพลีย บำรุงร่างกาย\n- **ถั่งเช่า** เพิ่มพลังงาน เสริมภูมิคุ้มกัน\n- **กระชายดำ** ช่วยเรื่องการไหลเวียนเลือด เสริมความกระฉับกระเฉง\n- **เห็ดหลินจือ** เสริมภูมิคุ้มกัน บำรุงร่างกาย\n- **แอล-คาร์นิทีน** ต้านอนุมูลอิสระ ช่วยการเผาผลาญ\n- **สารสกัดจากหอยนางรม** เสริมภูมิคุ้มกัน บำรุงร่างกาย\n- **ซิงค์ อะมิโน แอซิด คีเลต** เสริมภูมิคุ้มกัน บำรุงร่างกาย","sprite":"assets/ingredients-x2.webp","spriteN":7},{"id":"s2","title":"7 พลังแห่ง 2X","body":"1. **เพิ่มพลังงาน** ช่วยให้ร่างกายมีพลัง ไม่อ่อนเพลีย\n2. **การไหลเวียนเลือด** ส่งเสริมการไหลเวียนทั่วร่างกาย\n3. **เสริมภูมิคุ้มกัน** ช่วยเสริมสร้างภูมิคุ้มกันของร่างกาย\n4. **ฟื้นฟูร่างกาย** ช่วยให้ร่างกายฟื้นตัวเร็วขึ้น ลดความอ่อนล้า\n5. **บำรุงสมอง** ส่งเสริมการทำงานของสมอง สมาธิ และความจำ\n6. **เพิ่มความกระฉับกระเฉง** ช่วยให้รู้สึกกระปรี้กระเปร่า พร้อมลุยทุกกิจกรรม\n7. **สมุนไพรธรรมชาติ** สารสกัดจากสมุนไพรเข้มข้น"},{"id":"s3","title":"วิธีรับประทาน","body":"[ระบุจำนวนเม็ดต่อวันและเวลาที่แนะนำตามฉลาก]"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":["assets/poster-01.webp","assets/poster-02.webp","assets/poster-03.webp"]},{"id":"valenzo","cat":"health","name":"LOVE VALENZO","th":"เลิฟ วาเลนโซ่","eyebrow":"ผลิตภัณฑ์เสริมอาหาร","desc":"[ใส่คำอธิบายสินค้าโดยย่อ]","img":"assets/valenzo.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"[รูปแบบ]"},{"label":"บรรจุ","value":"[ขนาดบรรจุ]"},{"label":"เลข อย.","value":"[เลข อย.]"},{"label":"มาตรฐาน","value":"ฮาลาล"}],"certs":[],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["[ประเด็นสำคัญข้อ 1]","[ประเด็นสำคัญข้อ 2]","[ประเด็นสำคัญข้อ 3]"],"sections":[{"id":"s1","title":"ส่วนประกอบสำคัญ","body":"[ยังไม่มีข้อมูลสินค้านี้ในเอกสาร กรุณาเพิ่มส่วนประกอบและปริมาณ]"},{"id":"s2","title":"จุดเด่น","body":"[เพิ่มจุดเด่นของสินค้า]"},{"id":"s3","title":"วิธีรับประทาน","body":"[เพิ่มวิธีรับประทานตามฉลาก]"}],"note":{"title":"ข้อควรระวังเวลาแนะนำสินค้า","text":"เป็นผลิตภัณฑ์เสริมอาหาร ไม่ใช่ยา ไม่ควรกล่าวว่าป้องกันหรือรักษาโรคได้ ผลลัพธ์ขึ้นอยู่กับแต่ละบุคคล และควรรับประทานอาหารหลากหลายครบ 5 หมู่ควบคู่กัน"},"posters":[]},{"id":"turbo","cat":"agri","name":"POWER TURBO PLUS","th":"พาวเวอร์ เทอร์โบ พลัส","eyebrow":"สารเพิ่มประสิทธิภาพพืช · ปรับปรุงดิน","desc":"สารปรับปรุงดินเนื้อละเอียด มีแคลไซต์เป็นหลัก พร้อมแคลเซียม แมกนีเซียม และแร่ธาตุอื่น ๆ ช่วยปรับสภาพดินให้เหมาะกับการเพาะปลูก ยกระดับคุณภาพดินเพื่อเพิ่มคุณภาพพืชผล","img":"assets/turbo.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ผง บรรจุถุง"},{"label":"น้ำหนัก","value":"50 กิโลกรัม"},{"label":"มาตรฐาน","value":"Green Industry ระดับ 3 · ISO 9001 · ISO 14001 · ฮาลาล"}],"certs":[{"src":"assets/cert-green-industry.webp","alt":"Green Industry กระทรวงอุตสาหกรรม อุตสาหกรรมสีเขียวระดับที่ 3 การรับรองเลขที่ 3-0579/2565"},{"src":"assets/cert-iso.webp","alt":"BSCIC, JAS-ANZ ISO 9001 Registered, IAS Accredited, ISO 14001 Certified"},{"src":"assets/cert-fti.webp","alt":"สภาอุตสาหกรรมแห่งประเทศไทย (ส.อ.ท. / F.T.I.)"}],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["เป็นสินค้า “ปรับปรุงดิน” เริ่มต้นที่ดินดี พืชจึงแข็งแรง","ส่วนประกอบ 4 อย่าง คือ ปูนมาร์ล 40% คาร์บอนแบล็ค 40% ฮิวมิค 10% โดโลไมท์ 10%","ผสมกับปุ๋ยเคมีได้ ช่วยลดต้นทุนการใช้ปุ๋ย"],"sections":[{"id":"s1","title":"ส่วนประกอบสำคัญ","body":"- **ปูนมาร์ล 40%** ปรับโครงสร้างดิน ปรับสภาพความเป็นกรด-ด่าง\n- **คาร์บอนแบล็ค 40%** เพิ่มการดูดซึมธาตุอาหาร ช่วยกักเก็บน้ำ\n- **ฮิวมิค แอซิด 10%** ปรับปรุงโครงสร้างดิน กระตุ้นการเจริญเติบโตของราก\n- **โดโลไมท์ 10%** ปรับสมดุลความเป็นกรด-ด่าง ให้แคลเซียมและแมกนีเซียม"},{"id":"s2","title":"ประโยชน์ของปูนมาร์ล","body":"1. **ปรับสภาพความเป็นกรด-ด่างของดิน** ช่วยให้ดินเหมาะสมกับการเจริญเติบโตของพืช\n2. **เป็นแหล่งธาตุอาหารพืช** มีแคลเซียม แมกนีเซียม และแร่ธาตุอื่น ๆ ที่จำเป็น\n3. **ปรับปรุงโครงสร้างดิน** ทำให้ดินร่วนซุย ระบายน้ำดี ไม่อัดแน่น\n4. **ลดความแน่นของดิน** รากพืชชอนไชและเจริญเติบโตได้ดี\n5. **เพิ่มประสิทธิภาพการใช้ปุ๋ย** ป้องกันการสูญเสียปุ๋ยไปกับน้ำ และเพิ่มการดูดซึม"},{"id":"s3","title":"ประโยชน์ของคาร์บอนแบล็ค","body":"1. **ปรับปรุงคุณภาพดิน** ดินร่วนซุยขึ้น รากพืชแทรกตัวและดูดซึมธาตุอาหารได้ดี\n2. **เพิ่มความสามารถในการกักเก็บน้ำ** ช่วยเก็บความชื้นในดิน ลดการให้น้ำบ่อยครั้ง\n3. **เพิ่มการดูดซึมธาตุอาหาร** ช่วยให้พืชดูดซึมแร่ธาตุได้ดีขึ้น\n4. **ลดการชะล้างของดิน** ดินจับตัวดีขึ้น ไม่พังทลายง่าย\n5. **ช่วยดูดซับคาร์บอนส่วนเกินในดิน** ลดผลกระทบจากภาวะโลกร้อน"},{"id":"s4","title":"ประโยชน์ของสารฮิวมิค","body":"1. **ปรับปรุงโครงสร้างดิน** ดินร่วนซุย ระบายน้ำและอากาศได้ดี\n2. **เพิ่มความสามารถในการอุ้มน้ำ** ดินเก็บความชื้นได้นานขึ้น พืชทนแล้งได้ดีขึ้น\n3. **เพิ่มการดูดซึมธาตุอาหาร** ช่วยจับธาตุอาหารไว้ในดิน ไม่ให้ถูกชะล้าง\n4. **กระตุ้นการเจริญเติบโตของราก** รากแขนงออกมากขึ้น รากยาวและแตกกอดี\n5. **ลดความเป็นพิษของสารเคมีในดิน** ลดผลตกค้างของสารเคมีหรือโลหะหนัก\n6. **เพิ่มจุลินทรีย์ที่เป็นประโยชน์** กระตุ้นจุลินทรีย์ให้ย่อยอินทรียวัตถุในดินได้ดี"},{"id":"s5","title":"ประโยชน์ของแร่โดโลไมท์","body":"1. **ปรับค่าความเป็นกรด-ด่างของดิน** มีฤทธิ์เป็นด่างเล็กน้อย ช่วยให้พืชดูดธาตุอาหารได้ดีขึ้น\n2. **ปรับปรุงคุณภาพผลผลิต** ช่วยเรื่องขนาด สี รสชาติ และคุณภาพโดยรวมของผลไม้และผัก\n3. **ช่วยการเจริญเติบโตของราก** แมกนีเซียมช่วยส่งเสริมการพัฒนารากและการสังเคราะห์แสง\n4. **ปรับปรุงโครงสร้างดิน** ดินโปร่ง ร่วนซุย อุ้มน้ำได้ดี ไม่แน่นทึบ\n5. **เพิ่มความต้านทานต่อโรค** ช่วยลดความเสี่ยงจากโรคพืช เช่น โรครากเน่า โคนเน่า\n6. **เพิ่มประสิทธิภาพการใช้ปุ๋ย** ธาตุอาหารในปุ๋ยไม่ถูกชะล้างไปกับน้ำ"},{"id":"s6","title":"การใช้งาน","body":"ใช้หว่านปรับปรุงดิน หรือผสมกับปุ๋ยเคมีเพื่อลดต้นทุนการใช้ปุ๋ย ปลอดภัยต่อผู้ใช้และสิ่งแวดล้อม [ระบุอัตราการใช้ต่อไร่ตามฉลาก]"}],"note":null,"posters":["assets/poster-20.webp","assets/poster-21.webp","assets/poster-22.webp","assets/poster-23.webp","assets/poster-24.webp"]},{"id":"midas","cat":"agri","name":"MIDAS-888","th":"ไมดาส-888 · 3 พลังทองคำ","eyebrow":"สารเสริมประสิทธิภาพพืช","desc":"สารเสริมประสิทธิภาพพืชที่ใช้ได้ทั้งทางใบและทางดิน รวม 3 สารสำคัญ คือ ฮิวมิค สาหร่ายทะเล และฟูลวิค คืนชีวิตให้ดิน เติมพลังให้พืช","img":"assets/midas888.webp","badgeImg":"assets/organic.webp","specs":[{"label":"รูปแบบ","value":"บรรจุกล่อง"},{"label":"การใช้","value":"ทางใบและทางดิน"},{"label":"มาตรฐาน","value":"Green Industry ระดับ 3 · ISO 9001 · ISO 14001 · ฮาลาล"}],"certs":[{"src":"assets/cert-green-industry.webp","alt":"Green Industry กระทรวงอุตสาหกรรม อุตสาหกรรมสีเขียวระดับที่ 3 การรับรองเลขที่ 3-0579/2565"},{"src":"assets/cert-iso.webp","alt":"BSCIC, JAS-ANZ ISO 9001 Registered, IAS Accredited, ISO 14001 Certified"},{"src":"assets/cert-fti.webp","alt":"สภาอุตสาหกรรมแห่งประเทศไทย (ส.อ.ท. / F.T.I.)"}],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["จำว่า “3 พลังทองคำ” คือ Humic 40% Seaweed 30% Fulvic 30%","เด่นเรื่องฟื้นฟูดินและกระตุ้นรากใหม่","ใช้ได้กับพืชทุกระยะ ทั้งฉีดพ่นทางใบและให้ทางดิน"],"sections":[{"id":"s1","title":"ส่วนประกอบสำคัญ","body":"- **Humic Acid 40%** ช่วยฟื้นฟูดิน เพิ่มอินทรียวัตถุ และช่วยอุ้มธาตุอาหาร\n- **Seaweed Extract 30%** สาหร่ายทะเลธรรมชาติ ช่วยกระตุ้นการเจริญเติบโตของพืช\n- **Fulvic Acid 30%** ช่วยนำพาธาตุอาหารเข้าสู่พืช ดูดซึมได้ไวขึ้น"},{"id":"s2","title":"คุณประโยชน์เด่น","body":"1. **ช่วยให้รากเดินดี แตกแขนงไว** กระตุ้นรากใหม่ ปรับโครงสร้างดินให้ร่วนซุย\n2. **ฟื้นฟูดินเสื่อม ดินแน่น ดินแข็ง** เพิ่มอินทรียวัตถุ ปรับปรุงคุณภาพดิน\n3. **ช่วยให้พืชดูดซึมธาตุอาหารได้ดีขึ้น** ส่งธาตุอาหารสู่ต้นได้สมบูรณ์\n4. **ใบเขียว แข็งแรง สมบูรณ์** กระตุ้นการแตกใบอ่อน ส่งเสริมให้พืชโตไว\n5. **ช่วยลดความเครียดของพืชจากสภาพอากาศ** ปรับสมดุลให้พืช\n6. **สนับสนุนการเจริญเติบโตของพืชทุกระยะ** ทั้งระบบราก ลำต้น ใบ ดอก และผล รวมถึงฟื้นต้นหลังเก็บเกี่ยว"},{"id":"s3","title":"ข้อมูลเพิ่มเติม","body":"มีฮอร์โมนในกลุ่มที่พืชต้องการในรูปแบบ NAA (ออกซิน) จากธรรมชาติ"},{"id":"s4","title":"การใช้งาน","body":"[ระบุอัตราการใช้ตามฉลาก]"}],"note":null,"posters":["assets/poster-25.webp"]},{"id":"chitosan","cat":"agri","name":"MIDAS CHITOSAN","th":"ไมดาส ไคโตซาน","eyebrow":"สารเพิ่มประสิทธิภาพพืช · ชนิดน้ำ","desc":"ไคโตซานจากธรรมชาติ ช่วยเสริมภูมิคุ้มกันพืชและเพิ่มประสิทธิภาพการดูดซึมธาตุอาหาร ให้พืชแข็งแรง ได้ผลผลิตคุณภาพ","img":"assets/chitosan.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ชนิดน้ำ ฝาส้ม"},{"label":"ปริมาณสุทธิ","value":"1 ลิตร"},{"label":"มาตรฐาน","value":"Green Industry ระดับ 3 · ISO 9001 · ISO 14001 · ฮาลาล"}],"certs":[{"src":"assets/cert-green-industry.webp","alt":"Green Industry กระทรวงอุตสาหกรรม อุตสาหกรรมสีเขียวระดับที่ 3 การรับรองเลขที่ 3-0579/2565"},{"src":"assets/cert-iso.webp","alt":"BSCIC, JAS-ANZ ISO 9001 Registered, IAS Accredited, ISO 14001 Certified"},{"src":"assets/cert-fti.webp","alt":"สภาอุตสาหกรรมแห่งประเทศไทย (ส.อ.ท. / F.T.I.)"}],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["เด่นเรื่อง “เสริมเกราะป้องกัน” ให้พืชแข็งแรง ต้านทานโรคและแมลง","ไคโตซาน 15% พร้อมไกลซีน กรดซิตริก และวิตามินซี","ใช้เป็นสารจับใบได้ เมื่อผสมกับสารป้องกันกำจัดศัตรูพืช"],"sections":[{"id":"s1","title":"ส่วนประกอบสำคัญ","body":"- **Chitosan 15%** ไคโตซานจากธรรมชาติ กระตุ้นภูมิคุ้มกันพืช เสริมความแข็งแรง\n- **Glycine 6.5%** กรดอะมิโนจำเป็นต่อพืช ช่วยเร่งการเจริญเติบโตและซ่อมแซมเนื้อเยื่อ\n- **Citric Acid 8.5%** กรดซิตริก ช่วยปรับสภาพดินและเพิ่มการละลายธาตุอาหาร\n- **Ascorbic Acid**\n  1,500 มก.: วิตามินซี ช่วยเสริมภูมิคุ้มกัน ลดความเครียดของพืช"},{"id":"s2","title":"คุณประโยชน์เด่น","body":"1. **กระตุ้นการแบ่งเซลล์** พืชเจริญเติบโตได้เร็วขึ้น ทั้งราก ลำต้น ใบ และผล\n2. **เสริมภูมิคุ้มกันพืช** พืชแข็งแรง ต้านทานโรคและแมลง\n3. **ช่วยเร่งสมานแผล** ลดความเสียหายจากการเข้าทำลายของเชื้อโรค พืชฟื้นตัวเร็ว\n4. **ปรับปรุงโครงสร้างดิน** ดินร่วนซุย อุ้มน้ำดี เพิ่มจุลินทรีย์ที่เป็นประโยชน์\n5. **ช่วยให้พืชดูดซึมธาตุอาหารได้ดีขึ้น** ใช้ปุ๋ยได้เต็มประสิทธิภาพ\n6. **เพิ่มความแข็งแรงของผลผลิต** ช่วยให้ผลผลิตดีขึ้นทั้งปริมาณและคุณภาพ\n7. **เป็นสารจับใบ** ช่วยให้สารป้องกันกำจัดศัตรูพืชเกาะติดใบได้นานขึ้น\n8. **ลดความเครียดของพืช** จากสภาพแวดล้อมที่ไม่เหมาะสม เช่น ร้อน แล้ง หรือฝนตกหนัก"},{"id":"s3","title":"การใช้งาน","body":"[ระบุอัตราการใช้ต่อน้ำ 20 ลิตรตามฉลาก]"}],"note":null,"posters":["assets/poster-26.webp"]},{"id":"amino","cat":"agri","name":"MIDAS AMINO","th":"ไมดาส อะมิโน","eyebrow":"สารเพิ่มประสิทธิภาพพืช · ชนิดน้ำ","desc":"กรดอะมิโนและสารสกัดสาหร่ายทะเล ช่วยเร่งโต ออกดอก ติดผล และเพิ่มคุณภาพผลผลิต เติมอะมิโน เติมพลังให้พืช","img":"assets/amino.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ชนิดน้ำ ฝาเขียว"},{"label":"ปริมาณสุทธิ","value":"1 ลิตร"},{"label":"มาตรฐาน","value":"Green Industry ระดับ 3 · ISO 9001 · ISO 14001 · ฮาลาล"}],"certs":[{"src":"assets/cert-green-industry.webp","alt":"Green Industry กระทรวงอุตสาหกรรม อุตสาหกรรมสีเขียวระดับที่ 3 การรับรองเลขที่ 3-0579/2565"},{"src":"assets/cert-iso.webp","alt":"BSCIC, JAS-ANZ ISO 9001 Registered, IAS Accredited, ISO 14001 Certified"},{"src":"assets/cert-fti.webp","alt":"สภาอุตสาหกรรมแห่งประเทศไทย (ส.อ.ท. / F.T.I.)"}],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["เด่นเรื่อง “เร่งโต ออกดอก ติดผล”","มีสาหร่ายทะเล 13% และกรดอะมิโน 13%","ช่วยให้พืชฟื้นตัวเร็วหลังเก็บเกี่ยว พร้อมออกผลผลิตรุ่นต่อไป"],"sections":[{"id":"s1","title":"ส่วนประกอบสำคัญ","body":"- **Seaweed Extract 13%** สารสกัดสาหร่ายทะเลธรรมชาติ ช่วยกระตุ้นการเจริญเติบโตของพืช\n- **Amino Acid 13%** กรดอะมิโนจำเป็นต่อพืช ช่วยเร่งการเจริญเติบโต\n- **Glycine 6%** ช่วยเสริมสร้างความแข็งแรง และช่วยให้พืชทนต่อสภาพแวดล้อม\n- **Fulvic Acid 5.5%** ช่วยนำพาธาตุอาหารเข้าสู่พืช เสริมการดูดซึมให้มีประสิทธิภาพ"},{"id":"s2","title":"คุณประโยชน์เด่น","body":"1. **เร่งการเจริญเติบโต** พืชโตไว แตกใบอ่อน ลำต้นแข็งแรง\n2. **กระตุ้นการออกดอก ติดผล** ช่วยเพิ่มจำนวนดอกและการติดผลที่สมบูรณ์\n3. **เสริมสร้างรากให้แข็งแรง** รากเดินดี แตกแขนงมาก ดูดซึมอาหารได้ดีขึ้น\n4. **เพิ่มคุณภาพผลผลิต** ผลใหญ่ น้ำหนักดี สีสวย รสชาติดีขึ้น\n5. **เพิ่มความทนทานต่อสภาพแวดล้อม** ช่วยให้พืชทนแล้ง ทนร้อน ลดความเครียดจากสภาพอากาศ\n6. **ฟื้นฟูต้นหลังเก็บเกี่ยว** พืชฟื้นตัวเร็ว พร้อมออกผลผลิตรุ่นต่อไป"},{"id":"s3","title":"การใช้งาน","body":"[ระบุอัตราการใช้ต่อน้ำ 20 ลิตรตามฉลาก]"}],"note":null,"posters":["assets/poster-27.webp"]},{"id":"nano","cat":"agri","name":"SUPER AMINO NANO","th":"ซุปเปอร์ อะมิโน นาโน · อะมิโนคีเลต","eyebrow":"สารเพิ่มประสิทธิภาพพืช · ชนิดน้ำ","desc":"ธาตุอาหารเสริมในรูปอะมิโนคีเลต ผลิตด้วยเทคโนโลยีนาโน ซึมเข้าสู่พืชได้เร็วและสูญเสียน้อย ฉีดได้เกือบทุกระยะของพืช","img":"assets/nano.webp","badgeImg":"","specs":[{"label":"รูปแบบ","value":"ชนิดน้ำ"},{"label":"อัตราใช้","value":"15–20 ซีซี ต่อน้ำ 20 ลิตร"},{"label":"ความถี่","value":"ทุก 7–10 วัน"},{"label":"มาตรฐาน","value":"Green Industry ระดับ 3 · ISO 9001 · ISO 14001 · ฮาลาล"}],"certs":[{"src":"assets/cert-green-industry.webp","alt":"Green Industry กระทรวงอุตสาหกรรม อุตสาหกรรมสีเขียวระดับที่ 3 การรับรองเลขที่ 3-0579/2565"},{"src":"assets/cert-iso.webp","alt":"BSCIC, JAS-ANZ ISO 9001 Registered, IAS Accredited, ISO 14001 Certified"},{"src":"assets/cert-fti.webp","alt":"สภาอุตสาหกรรมแห่งประเทศไทย (ส.อ.ท. / F.T.I.)"}],"summaryTitle":"สรุปสั้น ๆ จำ 3 ข้อนี้","summary":["รวม 2 พลัง คือ นาโน = เร็ว และ คีเลต = คุ้ม","มีธาตุอาหารรอง-เสริม 5 ชนิด: Ca, Mg, Fe, Zn, B","ใช้ 15–20 ซีซี ต่อน้ำ 20 ลิตร ฉีดพ่นทุก 7–10 วัน ในช่วงเช้าหรือหลัง 5 โมงเย็น"],"sections":[{"id":"s1","title":"ทำไมต้อง “นาโน” และ “คีเลต”","body":"- **นาโน (Nano) เน้นความเร็ว**\n  คืออะไร: การย่อขนาดอนุภาคของสารอาหารให้เล็กระดับนาโนเมตร เล็กกว่ารูขุมขนของใบพืชหลายเท่า\n  ดีอย่างไร: ลอดผ่านปากใบและผนังเซลล์พืชได้ง่าย ไม่ต้องรอ\n  ผลลัพธ์: พืชได้รับธาตุอาหารไว เห็นความเขียวเร็ว\n- **คีเลต (Chelate) เน้นความคุ้มค่า**\n  คืออะไร: โครงสร้างโมเลกุลแบบ “ก้ามปู” ที่โอบล้อมธาตุอาหารไว้ ไม่ให้ทำปฏิกิริยากับสิ่งแวดล้อม\n  ดีอย่างไร: ป้องกันการตกตะกอนหรือระเหยทิ้ง ธาตุอาหารคงสภาพ ละลายน้ำพร้อมใช้\n  ผลลัพธ์: ลดการสูญเสียธาตุอาหารระหว่างทาง พืชได้รับเต็มที่"},{"id":"s2","title":"ธาตุอาหารและหน้าที่","body":"- **แคลเซียม (Ca) 3%** สร้างผนังเซลล์ ลำต้นแข็งแรง รากเดินดี\n- **แมกนีเซียม (Mg) 2%** เป็นหัวใจของคลอโรฟิลล์ ใบเขียวเข้ม สังเคราะห์แสงได้มากขึ้น\n- **เหล็ก (Fe) 2%** ช่วยสร้างคลอโรฟิลล์ เพิ่มความเขียว ลดอาการใบเหลือง\n- **สังกะสี (Zn) 1%** ช่วยแตกกอ กระตุ้นการเจริญเติบโต สร้างฮอร์โมนธรรมชาติ\n- **โบรอน (B) 0.1%** ช่วยสร้างเกสร ช่วยผสมเกสร เพิ่มเมล็ดเต็มรวง\n- **Amino Chelate** พาธาตุอาหารเข้าสู่พืช ฟื้นต้นไว ลดความเครียด"},{"id":"s3","title":"ตัวอย่างการใช้ในนาข้าว","body":"- **ระยะแตกกอ (15–30 วัน)** เร่งราก เร่งแตกกอ เพิ่มความเขียว ฟื้นตัวหลังปักดำ\n- **แตกกอเต็มที่** เพิ่มการสังเคราะห์แสง สะสมอาหาร สร้างต้นแข็งแรง\n- **ตั้งท้อง** สร้างรวง สร้างเกสร เพิ่มความสมบูรณ์ของรวง\n- **ระยะน้ำนม** เพิ่มน้ำหนักเมล็ด เพิ่มเปอร์เซ็นต์ข้าวเต็มเมล็ด ช่วยเคลื่อนย้ายอาหารเข้าเมล็ด"},{"id":"s4","title":"คุณประโยชน์ทั่วไป","body":"- ช่วยพัฒนารากและใบ ทำให้ต้นสมบูรณ์ แข็งแรง\n- ส่งเสริมการแตกตาดอก ดอกติดได้เร็วขึ้น\n- ฟื้นฟูสภาพต้นหลังเก็บเกี่ยว และส่งเสริมการทำใบชุดใหม่\n- ส่งเสริมการทำงานของจุลินทรีย์รอบรากพืช\n- ช่วยให้ดินร่วนซุย ระบายอากาศ เก็บความชื้นได้ดี พืชทนแล้ง\n- เหมาะกับพืชทุกชนิด: ข้าว ผัก ไม้ผล พืชไร่ ไม้ดอก และพืชเศรษฐกิจ"},{"id":"s5","title":"วิธีใช้ 4 ข้อ","body":"1. **อัตราส่วน** 15–20 ซีซี ต่อน้ำ 20 ลิตร\n2. **ใช้ร่วมกับสารอื่นได้** ผสมกับปุ๋ยทางใบ ฮอร์โมน และธาตุอาหารเสริมได้ทุกชนิด ควรใช้ช่วงเช้าหรือหลัง 5 โมงเย็น\n3. **ใช้ได้หลายวิธี** ฉีดพ่นทางใบ ดอก ทรงพุ่ม หรือรดราดโคนต้น\n4. **พ่นเป็นละอองเล็ก ๆ** พอเปียกทั่วใบและทุกส่วนของพืช ทุก 7–10 วัน"}],"note":null,"posters":["assets/poster-28.webp","assets/poster-29.webp"]}],"promos":[]}</script>
+<script id="app-js">
+(function(){
+"use strict";
+var published=JSON.parse(document.getElementById("state").textContent);
+var data=clone(published);
+var dirty=false,editing=false,canEdit=false,art=null,assets=null,saving=false;
+var ui={q:"",open:{},promoFilter:null};
+var DRAFT="spr99-draft",FS="spr99-fs";
+var SCALES=[1,1.125,1.25,1.375];
+var fsIdx=0;try{fsIdx=Math.max(0,Math.min(3,parseInt(localStorage.getItem(FS)||"0",10)||0))}catch(e){}
+applyFs();
+
+function clone(o){return JSON.parse(JSON.stringify(o))}
+function esc(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function uid(p){return p+Date.now().toString(36)+Math.random().toString(36).slice(2,6)}
+function store(k,v){try{if(v==null)localStorage.removeItem(k);else localStorage.setItem(k,v)}catch(e){}}
+function load(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function applyFs(){document.documentElement.style.fontSize=(16*SCALES[fsIdx])+"px"}
+
+var P={
+box:'<path d="M3.5 7.5 12 3l8.5 4.5v9L12 21l-8.5-4.5z"/><path d="M3.5 7.5 12 12l8.5-4.5M12 12v9"/>',
+tag:'<path d="M3 12V4a1 1 0 0 1 1-1h8l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="m13.5 6.5 4 4"/>',
+plus:'<path d="M12 5v14M5 12h14"/>',
+search:'<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h9"/>',
+check:'<path d="m5 12.5 4.5 4.5L19 7.5"/>',
+up:'<path d="m6 15 6-6 6 6"/>',down:'<path d="m6 9 6 6 6-6"/>',
+left:'<path d="m15 6-6 6 6 6"/>',right:'<path d="m9 6 6 6-6 6"/>',
+x:'<path d="M6 6l12 12M18 6 6 18"/>',
+cal:'<rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/>',
+warn:'<path d="M12 3 2.5 20h19z"/><path d="M12 10v4M12 17h.01"/>',
+img:'<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="9" cy="10" r="2"/><path d="m21 16-5-5-9 9"/>',
+trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+shield:'<path d="M12 3 4 6v6c0 4.5 3.4 8 8 9 4.6-1 8-4.5 8-9V6z"/><path d="m8.5 12 2.5 2.5 4.5-5"/>'
+};
+function ic(n){return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+P[n]+"</svg>"}
+
+/* ---------- text format ---------- */
+function inline(s){return esc(s).replace(/\*\*(.+?)\*\*/g,"<strong>$1</strong>").replace(/\[(ระบุ[^\]]*)\]/g,'<span class="ph-fill">$1</span>')}
+function itemHTML(raw,sub){
+  var m=raw.match(/^\*\*(.+?)\*\*\s*(.*)$/), h;
+  if(m)h='<span class="tt">'+inline(m[1])+"</span>"+(m[2]?'<span class="dd">'+inline(m[2])+"</span>":"");
+  else h='<span>'+inline(raw)+"</span>";
+  sub.forEach(function(s){var k=s.indexOf(": ");h+='<span class="sub">'+(k>0?"<b>"+inline(s.slice(0,k))+"</b> "+inline(s.slice(k+2)):inline(s))+"</span>"});
+  return h;
+}
+function prose(txt,sec){
+  var lines=String(txt||"").split(/\r?\n/),out=[],list=null,para=[],n=0;
+  function flushP(){if(para.length){out.push("<p>"+para.map(inline).join("<br>")+"</p>");para=[]}}
+  function flushL(){if(!list)return;out.push("<"+list.t+">"+list.items.map(function(it,i){
+    var mk;
+    var ix=n;if(sec&&sec.sprite&&list.t==="ul")n++;
+    if(sec&&sec.sprite&&list.t==="ul"&&(sec.spriteN==null||ix<sec.spriteN)){mk='<span class="ing" aria-hidden="true" style="background-image:url(\''+esc(sec.sprite)+'\');background-position:-'+(ix*46)+'px 0"></span>'}
+    else mk='<span class="mk" aria-hidden="true">'+(list.t==="ol"?(i+1):"")+"</span>";
+    return "<li>"+mk+'<span class="tx">'+itemHTML(it.t,it.sub)+"</span></li>"}).join("")+"</"+list.t+">");list=null}
+  lines.forEach(function(l){
+    var m;
+    if(/^\s*$/.test(l)){flushP();flushL();return}
+    if(list&&/^\s{2,}\S/.test(l)){list.items[list.items.length-1].sub.push(l.trim());return}
+    if((m=l.match(/^\s*[-•]\s+(.*)$/))){flushP();if(!list||list.t!=="ul"){flushL();list={t:"ul",items:[]}}list.items.push({t:m[1],sub:[]});return}
+    if((m=l.match(/^\s*\d+[.)]\s+(.*)$/))){flushP();if(!list||list.t!=="ol"){flushL();list={t:"ol",items:[]}}list.items.push({t:m[1],sub:[]});return}
+    flushL();para.push(l);
+  });
+  flushP();flushL();
+  return '<div class="prose">'+out.join("")+"</div>";
+}
+
+/* ---------- dates ---------- */
+function today(){var d=new Date();d.setHours(0,0,0,0);return d}
+function pd(s){if(!s)return null;var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2])}
+function thDate(s){var d=pd(s);if(!d||isNaN(d))return"";try{return d.toLocaleDateString("th-TH",{day:"numeric",month:"short",year:"numeric"})}catch(e){return s}}
+function pStatus(p){var t=today(),s=pd(p.start),e=pd(p.end);if(s&&t<s)return"soon";if(e&&t>e)return"ended";return"active"}
+var ST={active:["กำลังใช้งาน","st-active"],soon:["เร็ว ๆ นี้","st-soon"],ended:["หมดเขตแล้ว","st-ended"]};
+
+/* ---------- routing ---------- */
+function route(){var h=(location.hash||"").replace("#","");if(h==="promo")return{v:"promo"};if(h.indexOf("p-")===0){var p=prod(h.slice(2));if(p)return{v:"detail",p:p}}return{v:"home"}}
+function prod(id){return data.products.find(function(x){return x.id===id})}
+window.addEventListener("hashchange",function(){render();window.scrollTo(0,0)});
+
+/* ---------- render ---------- */
+var app=document.getElementById("app");
+function render(){
+  var r=route(),m=data.meta,tab=r.v==="promo"?"promo":"home";
+  var nav=[["products","สินค้า","box","home"],["promo","โปรโมชั่น","tag","promo"]];
+  var h='<header class="top gutter"><div class="wrap"><a class="brand" href="#products">'+(m.logo?'<img src="'+esc(m.logo)+'" alt="">':'<span class="mk">'+esc((m.brand||"?").charAt(0))+"</span>")+
+    "<span><b>"+esc(m.brand)+"</b><small>"+esc(m.sub)+"</small></span></a>"+
+    '<nav class="topnav" aria-label="เมนูหลัก">'+nav.map(function(n){return '<a href="#'+n[0]+'"'+(tab===n[3]?' aria-current="page"':"")+">"+n[1]+"</a>"}).join("")+"</nav>"+
+    '<div class="fs" role="group" aria-label="ขนาดตัวหนังสือ"><button data-act="fs" data-dir="-1" aria-label="ลดขนาดตัวหนังสือ"'+(fsIdx===0?" disabled":"")+'>ก-</button><button data-act="fs" data-dir="1" aria-label="เพิ่มขนาดตัวหนังสือ"'+(fsIdx===3?" disabled":"")+">ก+</button></div>"+
+    (canEdit?'<button class="edit-toggle" data-act="toggle-edit" aria-pressed="'+editing+'">'+ic(editing?"check":"edit")+"<span>"+(editing?"เสร็จ":"แก้ไข")+"</span></button>":"")+
+    "</div></header>";
+  h+='<main class="gutter"><div class="wrap view">'+(r.v==="promo"?viewPromo():r.v==="detail"?viewDetail(r.p):viewHome())+"</div></main>";
+  h+='<nav class="tabbar gutter" aria-label="เมนูหลัก"><div class="wrap">'+nav.map(function(n){return '<a href="#'+n[0]+'"'+(tab===n[3]?' aria-current="page"':"")+'><span class="pill">'+ic(n[2])+"</span>"+n[1]+"</a>"}).join("")+"</div></nav>";
+  if(dirty&&canEdit)h+='<div class="savebar gutter"><div class="wrap"><div class="in"><span class="msg">'+(saving?"กำลังบันทึก…":"มีการแก้ไขที่ยังไม่เผยแพร่")+'</span><button class="btn btn-sm b-cancel" data-act="discard"'+(saving?" disabled":"")+'>ยกเลิก</button><button class="btn btn-sm b-save" data-act="publish"'+(saving?" disabled":"")+">"+ic("check")+"บันทึกและเผยแพร่</button></div></div></div>";
+  app.innerHTML=h;
+  if(r.v==="home")renderGrid();
+}
+function editBtn(act,id,label,icon){return '<button class="btn btn-soft btn-sm" data-act="'+act+'"'+(id!=null?' data-id="'+esc(id)+'"':"")+">"+ic(icon||"edit")+esc(label||"แก้ไข")+"</button>"}
+function imgOr(src,alt,cls){return src?'<img'+(cls?' class="'+cls+'"':"")+' src="'+esc(src)+'" alt="'+esc(alt||"")+'" loading="lazy">':'<span class="noimg">'+ic("img")+"</span>"}
+
+function viewHome(){
+  var m=data.meta;
+  var h='<div class="stack"><section class="intro"><div class="eyebrow">'+esc(m.kicker)+"</div><h1>"+esc(m.title)+"</h1>"+(m.intro?"<p>"+esc(m.intro)+"</p>":"")+
+    '<div class="chips">'+(m.badge?'<span class="chip-s gold">'+ic("shield")+esc(m.badge)+"</span>":"")+'<span class="chip-s">สินค้า '+data.products.length+" รายการ</span></div>"+
+    (editing?'<div class="row" style="margin-top:14px">'+editBtn("edit-meta",null,"แก้ไขหัวเว็บและคำแนะนำ")+"</div>":"")+"</section>";
+  h+='<label class="search">'+ic("search")+'<input id="q" type="search" placeholder="ค้นหาสินค้า เช่น คอลลาเจน, นาข้าว" value="'+esc(ui.q)+'" autocomplete="off" aria-label="ค้นหาสินค้า"></label>';
+  h+='<div id="grid" class="stack"></div>';
+  if(m.footer)h+="<footer>"+esc(m.footer)+"</footer>";
+  return h+"</div>";
+}
+function renderGrid(){
+  var box=document.getElementById("grid");if(!box)return;
+  var q=ui.q.trim().toLowerCase(),h="",any=false;
+  data.cats.forEach(function(c){
+    var list=data.products.filter(function(p){if(p.cat!==c.id)return false;if(!q)return true;
+      return [p.name,p.th,p.eyebrow,p.desc].concat(p.summary,p.sections.map(function(s){return s.title+" "+s.body})).join(" ").toLowerCase().indexOf(q)>=0});
+    if(!list.length&&!editing)return;any=any||list.length>0;
+    h+='<section class="stack" style="gap:14px"><div class="sec-head"><h2><span class="dot'+(c.id==="agri"?" agri":"")+'"></span>'+esc(c.name)+'</h2><span class="count">'+list.length+" รายการ</span></div>";
+    h+='<div class="grid">'+list.map(function(p){return '<a class="card pcard'+(p.cat==="agri"?" agri":"")+'" href="#p-'+esc(p.id)+'"><span class="ph">'+imgOr(p.img,"")+'</span><span class="pt"><b>'+esc(p.name)+"</b><small>"+esc(p.th)+"</small></span></a>"}).join("")+"</div>";
+    if(editing)h+='<div class="row">'+editBtn("add-product",c.id,"เพิ่มสินค้าในหมวดนี้","plus")+"</div>";
+    h+="</section>";
+  });
+  if(!any&&!editing)h='<div class="empty">ไม่พบสินค้าที่ตรงกับ “'+esc(ui.q)+"”</div>";
+  box.innerHTML=h;
+}
+
+function viewDetail(p){
+  var list=data.products,i=list.indexOf(p),prev=list[i-1],next=list[i+1],agri=p.cat==="agri";
+  var allOpen=p.sections.length&&p.sections.every(function(s){return ui.open[p.id+"/"+s.id]});
+  var h='<div class="stack" style="gap:18px"><div class="back"><a class="btn btn-ghost btn-sm" href="#products">'+ic("left")+'สินค้าทั้งหมด</a>'+(p.sections.length?'<button class="btn btn-sm" style="color:var(--accent-ink)" data-act="toggle-all" data-id="'+esc(p.id)+'">'+(allOpen?"ปิดทั้งหมด":"เปิดอ่านทั้งหมด")+"</button>":"")+"</div>";
+  if(editing)h+='<div class="editbar"><span class="lbl">จัดการสินค้านี้</span>'+editBtn("edit-product",p.id,"แก้ไขข้อมูลหลัก")+editBtn("pick-img",p.id,"เปลี่ยนรูปสินค้า","img")+
+    '<button class="icon-btn" data-act="move-product" data-id="'+esc(p.id)+'" data-dir="-1" aria-label="เลื่อนสินค้าไปก่อนหน้า">'+ic("left")+'</button><button class="icon-btn" data-act="move-product" data-id="'+esc(p.id)+'" data-dir="1" aria-label="เลื่อนสินค้าไปถัดไป">'+ic("right")+"</button></div>";
+  h+='<article class="card hero'+(agri?" agri":"")+'"><div class="hero-stage">'+imgOr(p.img,p.name,"main")+(p.badgeImg?'<img class="badge" src="'+esc(p.badgeImg)+'" alt="">':"")+'</div><div class="hero-info">'+
+    (p.eyebrow?'<span class="eyebrow">'+esc(p.eyebrow)+"</span>":"")+"<h1>"+esc(p.name)+"</h1>"+(p.th?'<p class="th">'+esc(p.th)+"</p>":"")+(p.desc?'<p class="desc">'+inline(p.desc)+"</p>":"")+
+    (p.specs.length?'<div class="specs">'+p.specs.map(function(s){return '<div class="spec"><div class="l">'+esc(s.label)+'</div><div class="v">'+esc(s.value)+"</div></div>"}).join("")+"</div>":"")+"</div></article>";
+  if(p.certs&&p.certs.length)h+='<div class="certs" aria-label="มาตรฐานและการรับรอง">'+p.certs.map(function(c){return '<img src="'+esc(c.src)+'" alt="'+esc(c.alt)+'" loading="lazy">'}).join("")+"</div>";
+  if(p.summary.length)h+='<section class="summary"><h2>'+esc(p.summaryTitle||"สรุปสั้น ๆ")+"</h2><ol>"+p.summary.map(function(s,k){return "<li><i>"+(k+1)+"</i><span>"+inline(s)+"</span></li>"}).join("")+"</ol></section>";
+  if(p.posters.length||editing){
+    h+='<section class="stack" style="gap:12px"><div class="sec-head"><h2 style="font-size:1.1rem">ภาพสินค้าและโปสเตอร์</h2>'+(p.posters.length?'<span class="count">แตะเพื่อดูภาพใหญ่</span>':"")+'</div><div class="gallery">';
+    h+=p.posters.map(function(src,k){return '<div class="poster"><button style="all:unset;display:block;cursor:zoom-in" data-act="lightbox" data-id="'+esc(p.id)+'" data-i="'+k+'" aria-label="ดูภาพที่ '+(k+1)+'"><img src="'+esc(src)+'" alt="โปสเตอร์ '+esc(p.name)+" "+(k+1)+'" loading="lazy"></button>'+
+      (editing?'<div class="tools"><button class="icon-btn" data-act="move-poster" data-id="'+esc(p.id)+'" data-i="'+k+'" data-dir="-1" aria-label="เลื่อนซ้าย">'+ic("left")+'</button><button class="icon-btn" data-act="move-poster" data-id="'+esc(p.id)+'" data-i="'+k+'" data-dir="1" aria-label="เลื่อนขวา">'+ic("right")+'</button><button class="icon-btn" data-act="del-poster" data-id="'+esc(p.id)+'" data-i="'+k+'" aria-label="ลบภาพนี้" style="color:#c2334a">'+ic("trash")+"</button></div>":"")+"</div>"}).join("");
+    if(editing)h+='<button class="poster-add" data-act="add-poster" data-id="'+esc(p.id)+'">'+ic("plus")+"เพิ่มรูป<br>(เลือกได้หลายรูป)</button>";
+    h+="</div></section>";
+  }
+  h+='<div class="acc">'+p.sections.map(function(s,k){
+    var key=p.id+"/"+s.id,open=!!ui.open[key];
+    return '<section class="card sec'+(open?" open":"")+'"><h3 style="margin:0"><button class="sec-btn" data-act="toggle-sec" data-id="'+esc(key)+'" aria-expanded="'+open+'"><span>'+esc(s.title)+"</span>"+ic("down")+"</button></h3>"+
+      (open?'<div class="sec-body">'+(s.img?'<div class="sec-img"><img src="'+esc(s.img)+'" alt="" loading="lazy"></div>':"")+prose(s.body,s)+
+        (editing?'<div class="row">'+editBtn("edit-sec",key)+'<button class="icon-btn" data-act="move-sec" data-id="'+esc(key)+'" data-dir="-1" aria-label="เลื่อนขึ้น">'+ic("up")+'</button><button class="icon-btn" data-act="move-sec" data-id="'+esc(key)+'" data-dir="1" aria-label="เลื่อนลง">'+ic("down")+"</button></div>":"")+"</div>":"")+"</section>";
+  }).join("")+"</div>";
+  if(editing)h+='<div class="row">'+editBtn("add-sec",p.id,"เพิ่มหัวข้อ","plus")+"</div>";
+  if(p.note&&(p.note.text||p.note.title))h+='<aside class="note">'+ic("warn")+"<div><b>"+esc(p.note.title||"ข้อควรระวัง")+"</b><p>"+inline(p.note.text)+"</p></div></aside>";
+  h+='<nav class="pager" aria-label="สินค้าอื่น">'+(prev?'<a class="card" href="#p-'+esc(prev.id)+'"><small>ก่อนหน้า</small><b>'+esc(prev.name)+"</b></a>":"<span></span>")+(next?'<a class="card next" href="#p-'+esc(next.id)+'"><small>ถัดไป</small><b>'+esc(next.name)+"</b></a>":"<span></span>")+"</nav>";
+  return h+"</div>";
+}
+
+function promoCard(p){
+  var s=pStatus(p),st=ST[s],rp=p.product&&prod(p.product);
+  return '<article class="card promo'+(s==="ended"?" ended":"")+'">'+
+    (p.img?'<button class="promo-img" data-act="lightbox-promo" data-id="'+esc(p.id)+'" aria-label="ดูภาพใหญ่"><img src="'+esc(p.img)+'" alt="" loading="lazy"><span class="status '+st[1]+'">'+st[0]+"</span></button>":'<div class="promo-top"><span class="status '+st[1]+'">'+st[0]+"</span><b>"+esc(p.badge||"โปรโมชั่น")+"</b></div>")+
+    '<div class="promo-body">'+(p.img&&p.badge?'<span class="eyebrow">'+esc(p.badge)+"</span>":"")+"<h3>"+esc(p.title)+"</h3>"+(p.detail?'<p class="d">'+inline(p.detail)+"</p>":"")+
+    ((p.start||p.end)?'<div class="period">'+ic("cal")+"<span>"+esc(p.start&&p.end?thDate(p.start)+" – "+thDate(p.end):p.end?"ถึง "+thDate(p.end):"เริ่ม "+thDate(p.start))+"</span></div>":"")+
+    (p.code?'<div class="code"><span>'+esc(p.code)+'</span><button class="btn btn-primary btn-sm" data-act="copy" data-text="'+esc(p.code)+'">'+ic("copy")+"คัดลอกโค้ด</button></div>":"")+
+    (rp?'<a class="rel" href="#p-'+esc(rp.id)+'">'+(rp.img?'<img src="'+esc(rp.img)+'" alt="">':"")+"<span>สินค้าที่ร่วมรายการ<br><b>"+esc(rp.name)+"</b></span>"+ic("right")+"</a>":"")+
+    (p.cond?'<details class="cond"><summary>เงื่อนไข'+ic("down")+"</summary>"+prose(p.cond)+"</details>":"")+
+    (editing?'<div class="row" style="margin-top:auto">'+editBtn("edit-promo",p.id)+'<button class="icon-btn" data-act="move-promo" data-id="'+esc(p.id)+'" data-dir="-1" aria-label="เลื่อนขึ้น">'+ic("up")+'</button><button class="icon-btn" data-act="move-promo" data-id="'+esc(p.id)+'" data-dir="1" aria-label="เลื่อนลง">'+ic("down")+"</button></div>":"")+
+    "</div></article>";
+}
+function viewPromo(){
+  var c={all:data.promos.length,active:0,soon:0,ended:0};data.promos.forEach(function(p){c[pStatus(p)]++});
+  var f=ui.promoFilter||(c.active?"active":"all");
+  var list=data.promos.filter(function(p){return f==="all"||pStatus(p)===f});
+  if(f==="all"){var o={active:0,soon:1,ended:2};list=list.slice().sort(function(a,b){return o[pStatus(a)]-o[pStatus(b)]})}
+  var h='<div class="stack" style="gap:18px"><div class="sec-head"><div><div class="eyebrow">ข้อเสนอพิเศษ</div><h1 style="font-size:1.9rem;font-weight:700">โปรโมชั่น</h1></div>'+(editing?'<button class="btn btn-primary btn-sm" data-act="add-promo">'+ic("plus")+"เพิ่มโปรโมชั่น</button>":"")+"</div>";
+  if(data.promos.length)h+='<div class="ftabs" role="group" aria-label="สถานะโปรโมชั่น">'+[["active","กำลังใช้งาน"],["soon","เร็ว ๆ นี้"],["ended","หมดเขต"],["all","ทั้งหมด"]].map(function(t){return '<button class="ftab" data-act="promo-filter" data-id="'+t[0]+'" aria-pressed="'+(f===t[0])+'">'+t[1]+'<span class="n">'+c[t[0]]+"</span></button>"}).join("")+"</div>";
+  if(list.length)h+='<div class="promos">'+list.map(promoCard).join("")+"</div>";
+  else if(!data.promos.length)h+='<div class="empty"><b style="color:var(--fg)">ยังไม่มีโปรโมชั่นตอนนี้</b><br>'+(editing?"กด <b>เพิ่มโปรโมชั่น</b> ด้านบน ใส่รูป วันเริ่ม–สิ้นสุด และเงื่อนไขได้":"ติดตามโปรโมชั่นใหม่ได้ที่หน้านี้")+"</div>";
+  else h+='<div class="empty">ไม่มีโปรโมชั่นในหมวดนี้</div>';
+  return h+"</div>";
+}
+
+/* ---------- images ---------- */
+function pickFiles(multi){return new Promise(function(res){var i=document.createElement("input");i.type="file";i.accept="image/*";i.multiple=!!multi;i.style.display="none";document.body.appendChild(i);i.addEventListener("change",function(){var f=Array.prototype.slice.call(i.files||[]);i.remove();res(f)});i.click()})}
+function shrink(file){
+  return new Promise(function(res){
+    if(!/^image\/(jpeg|png|webp)$/.test(file.type)||!window.createImageBitmap){res(file);return}
+    createImageBitmap(file).then(function(bm){
+      var max=1600,s=Math.min(1,max/Math.max(bm.width,bm.height));
+      if(s===1&&file.size<700000){res(file);return}
+      var c=document.createElement("canvas");c.width=Math.round(bm.width*s);c.height=Math.round(bm.height*s);
+      c.getContext("2d").drawImage(bm,0,0,c.width,c.height);
+      c.toBlob(function(b){res(b&&b.size<file.size?b:file)},"image/webp",0.86);
+    },function(){res(file)});
+  });
+}
+function upload(files){
+  if(!assets){toast("อัปโหลดรูปได้เฉพาะเจ้าของเว็บที่เปิดผ่านบัญชีของตัวเอง");return Promise.resolve([])}
+  toast("กำลังอัปโหลดรูป…",60000);
+  return files.reduce(function(chain,f){return chain.then(function(out){return shrink(f).then(function(b){return assets.upload(b)}).then(function(r){out.push(r.url);return out},function(e){toast("อัปโหลด "+f.name+" ไม่สำเร็จ"+(e&&e.code==="too_large"?" (ไฟล์ใหญ่เกิน 20 MB)":""));return out})})},Promise.resolve([]))
+    .then(function(urls){if(urls.length)toast("อัปโหลดแล้ว "+urls.length+" รูป");return urls});
+}
+
+/* ---------- lightbox ---------- */
+function lightbox(srcs,start){
+  var d=document.createElement("div");d.className="lb";d.setAttribute("role","dialog");d.setAttribute("aria-label","ภาพขนาดใหญ่");
+  d.innerHTML='<div class="lb-top"><span id="lb-n"></span><button class="icon-btn" data-x aria-label="ปิด">'+ic("x")+'</button></div><div class="lb-track">'+srcs.map(function(s){return '<figure><img src="'+esc(s)+'" alt=""></figure>'}).join("")+"</div>";
+  document.body.appendChild(d);
+  var tr=d.querySelector(".lb-track"),n=d.querySelector("#lb-n");
+  function upd(){var i=Math.round(tr.scrollLeft/tr.clientWidth);n.textContent=(i+1)+" / "+srcs.length}
+  tr.scrollLeft=start*tr.clientWidth;upd();tr.addEventListener("scroll",upd,{passive:true});
+  function close(){d.remove();document.removeEventListener("keydown",key)}
+  function key(e){if(e.key==="Escape")close();if(e.key==="ArrowRight")tr.scrollBy({left:tr.clientWidth,behavior:"smooth"});if(e.key==="ArrowLeft")tr.scrollBy({left:-tr.clientWidth,behavior:"smooth"})}
+  document.addEventListener("keydown",key);
+  d.addEventListener("click",function(e){if(e.target.closest("[data-x]")||e.target.tagName==="FIGURE")close()});
+}
+
+/* ---------- sheet ---------- */
+function sheet(o){
+  var ov=document.createElement("div");ov.className="overlay";
+  function fieldHTML(f){
+    var v=o.values[f.key]==null?"":o.values[f.key],id="f-"+f.key,ctl;
+    if(f.type==="textarea")ctl='<textarea id="'+id+'" name="'+f.key+'" rows="'+(f.rows||6)+'"'+(f.ph?' placeholder="'+esc(f.ph)+'"':"")+">"+esc(v)+"</textarea>";
+    else if(f.type==="select")ctl='<select id="'+id+'" name="'+f.key+'">'+f.options.map(function(op){return '<option value="'+esc(op[0])+'"'+(op[0]===v?" selected":"")+">"+esc(op[1])+"</option>"}).join("")+"</select>";
+    else if(f.type==="image")ctl='<div class="imgfield"><span class="pv" data-pv="'+f.key+'">'+(v?'<img src="'+esc(v)+'" alt="">':ic("img"))+'</span><input type="hidden" name="'+f.key+'" value="'+esc(v)+'"><div class="row"><button type="button" class="btn btn-soft btn-sm" data-pick="'+f.key+'">'+ic("img")+'เลือกรูป</button><button type="button" class="btn btn-ghost btn-sm" data-clear="'+f.key+'">ไม่ใช้รูป</button></div></div>';
+    else ctl='<input id="'+id+'" name="'+f.key+'" type="'+(f.type||"text")+'" value="'+esc(v)+'"'+(f.ph?' placeholder="'+esc(f.ph)+'"':"")+">";
+    return '<div class="field"><label for="'+id+'">'+esc(f.label)+"</label>"+ctl+(f.hint?'<span class="hint">'+f.hint+"</span>":"")+"</div>";
+  }
+  ov.innerHTML='<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sh-t"><div class="sheet-h"><h2 id="sh-t">'+esc(o.title)+'</h2><button class="icon-btn" data-x aria-label="ปิด">'+ic("x")+'</button></div><form class="sheet-b">'+
+    o.fields.map(function(f){return f.row?'<div class="two">'+f.row.map(fieldHTML).join("")+"</div>":fieldHTML(f)}).join("")+
+    '</form><div class="sheet-f">'+(o.onDelete?'<button class="btn btn-danger btn-sm" data-del>'+ic("trash")+"ลบ</button>":"")+'<span class="sp"></span><button class="btn btn-ghost btn-sm" data-x>ยกเลิก</button><button class="btn btn-primary btn-sm" data-ok>'+ic("check")+"ตกลง</button></div></div>";
+  document.body.appendChild(ov);
+  function close(){ov.remove();document.removeEventListener("keydown",key)}
+  function key(e){if(e.key==="Escape")close()}
+  document.addEventListener("keydown",key);
+  var armed=false;
+  ov.addEventListener("click",function(e){
+    if(e.target===ov||e.target.closest("[data-x]")){close();return}
+    var pk=e.target.closest("[data-pick]");
+    if(pk){var k=pk.getAttribute("data-pick");pickFiles(false).then(function(f){return f.length?upload(f):[]}).then(function(u){if(!u.length)return;ov.querySelector('[name="'+k+'"]').value=u[0];ov.querySelector('[data-pv="'+k+'"]').innerHTML='<img src="'+esc(u[0])+'" alt="">'});return}
+    var cl=e.target.closest("[data-clear]");
+    if(cl){var k2=cl.getAttribute("data-clear");ov.querySelector('[name="'+k2+'"]').value="";ov.querySelector('[data-pv="'+k2+'"]').innerHTML=ic("img");return}
+    if(e.target.closest("[data-ok]")){var v={};ov.querySelectorAll("[name]").forEach(function(el){v[el.name]=el.value.trim()});var err=o.validate&&o.validate(v);if(err){toast(err);return}o.onSave(v);close();return}
+    var d=e.target.closest("[data-del]");
+    if(d){if(!armed){armed=true;d.textContent="แตะอีกครั้งเพื่อยืนยันการลบ";return}o.onDelete();close()}
+  });
+  ov.querySelector("form").addEventListener("submit",function(e){e.preventDefault()});
+}
+var FMT='เว้นบรรทัดว่าง = ย่อหน้าใหม่ · <b>- </b> = รายการ · <b>1. </b> = ลำดับ · <b>**คำ**</b> = ตัวหนา · เว้น 2 ช่องหน้าบรรทัด = รายละเอียดย่อยของรายการก่อนหน้า';
+function lines(a){return a.map(function(x){return x.label+": "+x.value}).join("\n")}
+function parseLines(s){return String(s||"").split(/\r?\n/).map(function(l){var i=l.indexOf(":");if(i<0)return l.trim()?{label:l.trim(),value:""}:null;return{label:l.slice(0,i).trim(),value:l.slice(i+1).trim()}}).filter(Boolean)}
+function mutate(fn){fn(data);dirty=true;store(DRAFT,JSON.stringify(data));render()}
+function move(a,i,dir){var j=i+dir;if(i<0||j<0||j>=a.length)return;var t=a[i];a[i]=a[j];a[j]=t}
+function secOf(key){var k=key.split("/"),p=prod(k[0]);return{p:p,i:p?p.sections.findIndex(function(s){return s.id===k[1]}):-1}}
+
+/* ---------- actions ---------- */
+document.addEventListener("click",function(e){
+  var b=e.target.closest("[data-act]");if(!b||!app.contains(b))return;
+  var act=b.getAttribute("data-act"),id=b.getAttribute("data-id"),p,s;
+  switch(act){
+  case"fs":fsIdx=Math.max(0,Math.min(3,fsIdx+(+b.getAttribute("data-dir"))));store(FS,String(fsIdx));applyFs();render();break;
+  case"toggle-edit":editing=!editing;render();break;
+  case"toggle-sec":ui.open[id]=!ui.open[id];render();break;
+  case"toggle-all":p=prod(id);var all=p.sections.every(function(x){return ui.open[p.id+"/"+x.id]});p.sections.forEach(function(x){ui.open[p.id+"/"+x.id]=!all});render();break;
+  case"lightbox":p=prod(id);lightbox(p.posters,+b.getAttribute("data-i"));break;
+  case"lightbox-promo":s=data.promos.find(function(x){return x.id===id});if(s&&s.img)lightbox([s.img],0);break;
+  case"promo-filter":ui.promoFilter=id;render();break;
+  case"copy":copy(b.getAttribute("data-text"));break;
+  case"edit-meta":sheet({title:"หัวเว็บและคำแนะนำ",values:data.meta,fields:[{row:[{key:"brand",label:"ชื่อแบรนด์"},{key:"sub",label:"คำใต้ชื่อ"}]},{key:"logo",label:"โลโก้",type:"image"},{key:"kicker",label:"ข้อความเล็กเหนือหัวข้อ"},{key:"title",label:"หัวข้อหน้าแรก"},{key:"intro",label:"คำแนะนำ",type:"textarea",rows:3},{key:"badge",label:"ป้ายเด่น",ph:"มาตรฐานฮาลาลทุกรายการ"},{key:"footer",label:"ข้อความท้ายหน้า",type:"textarea",rows:3}],
+    onSave:function(v){mutate(function(d){Object.assign(d.meta,v)})}});break;
+  case"add-product":case"edit-product":
+    p=act==="edit-product"?prod(id):{cat:id,name:"",th:"",eyebrow:"",desc:"",specs:[],summary:[],note:null,summaryTitle:"สรุปสั้น ๆ จำ 3 ข้อนี้"};
+    sheet({title:act==="add-product"?"เพิ่มสินค้า":"แก้ไขข้อมูลหลัก",values:{name:p.name,th:p.th,eyebrow:p.eyebrow,cat:p.cat,desc:p.desc,img:p.img||"",specs:lines(p.specs),summaryTitle:p.summaryTitle,summary:p.summary.join("\n"),noteTitle:p.note?p.note.title:"ข้อควรระวังเวลาแนะนำสินค้า",noteText:p.note?p.note.text:""},
+      fields:[{key:"name",label:"ชื่อสินค้า"},{key:"th",label:"ชื่ออ่านภาษาไทย"},{row:[{key:"cat",label:"หมวด",type:"select",options:data.cats.map(function(c){return[c.id,c.name]})},{key:"eyebrow",label:"ประเภท",ph:"ผลิตภัณฑ์เสริมอาหาร"}]},
+        {key:"img",label:"รูปสินค้า",type:"image"},{key:"desc",label:"คำอธิบายสั้น",type:"textarea",rows:3},{key:"specs",label:"ข้อมูลสินค้า (บรรทัดละ 1 ข้อ แบบ ชื่อ: ค่า)",type:"textarea",rows:5,ph:"รูปแบบ: ผงชงดื่ม"},
+        {key:"summaryTitle",label:"หัวข้อสรุป"},{key:"summary",label:"สรุปสั้น ๆ (บรรทัดละ 1 ข้อ)",type:"textarea",rows:4},{key:"noteTitle",label:"หัวข้อข้อควรระวัง"},{key:"noteText",label:"ข้อควรระวัง (เว้นว่างได้)",type:"textarea",rows:3}],
+      validate:function(v){return v.name?"":"กรุณาใส่ชื่อสินค้า"},
+      onSave:function(v){mutate(function(d){
+        var x=act==="add-product"?{id:uid("x"),certs:[],sections:[],posters:[],badgeImg:""}:d.products.find(function(y){return y.id===id});
+        x.name=v.name;x.th=v.th;x.cat=v.cat;x.eyebrow=v.eyebrow;x.desc=v.desc;x.img=v.img;x.specs=parseLines(v.specs);x.summaryTitle=v.summaryTitle;
+        x.summary=v.summary.split(/\r?\n/).map(function(t){return t.trim()}).filter(Boolean);x.note=v.noteText?{title:v.noteTitle,text:v.noteText}:null;
+        if(act==="add-product"){d.products.push(x);setTimeout(function(){location.hash="p-"+x.id},0)}
+      })},
+      onDelete:act==="edit-product"?function(){mutate(function(d){d.products=d.products.filter(function(y){return y.id!==id})});location.hash="products"}:null});break;
+  case"move-product":mutate(function(d){move(d.products,d.products.findIndex(function(y){return y.id===id}),+b.getAttribute("data-dir"))});break;
+  case"pick-img":pickFiles(false).then(function(f){return f.length?upload(f):[]}).then(function(u){if(u.length)mutate(function(){prod(id).img=u[0]})});break;
+  case"add-poster":pickFiles(true).then(function(f){return f.length?upload(f):[]}).then(function(u){if(u.length)mutate(function(){var x=prod(id);x.posters=x.posters.concat(u)})});break;
+  case"move-poster":mutate(function(){move(prod(id).posters,+b.getAttribute("data-i"),+b.getAttribute("data-dir"))});break;
+  case"del-poster":if(b.getAttribute("data-armed")){mutate(function(){prod(id).posters.splice(+b.getAttribute("data-i"),1)})}else{b.setAttribute("data-armed","1");b.style.background="#c2334a";b.style.color="#fff";toast("แตะถังขยะอีกครั้งเพื่อลบรูปนี้")}break;
+  case"add-sec":case"edit-sec":
+    var so=act==="edit-sec"?secOf(id):{p:prod(id),i:-1};s=so.i>=0?so.p.sections[so.i]:{title:"",body:"",img:""};
+    sheet({title:act==="add-sec"?"เพิ่มหัวข้อ":"แก้ไขหัวข้อ",values:s,fields:[{key:"title",label:"ชื่อหัวข้อ"},{key:"img",label:"รูปประกอบ (ถ้ามี)",type:"image"},{key:"body",label:"เนื้อหา",type:"textarea",rows:12,hint:FMT}],
+      validate:function(v){return v.title?"":"กรุณาใส่ชื่อหัวข้อ"},
+      onSave:function(v){mutate(function(){if(so.i<0){var nid=uid("s");so.p.sections.push({id:nid,title:v.title,body:v.body,img:v.img});ui.open[so.p.id+"/"+nid]=true}else{Object.assign(so.p.sections[so.i],{title:v.title,body:v.body,img:v.img})}})},
+      onDelete:so.i>=0?function(){mutate(function(){so.p.sections.splice(so.i,1)})}:null});break;
+  case"move-sec":var sm=secOf(id);mutate(function(){move(sm.p.sections,sm.i,+b.getAttribute("data-dir"))});break;
+  case"add-promo":case"edit-promo":
+    s=act==="edit-promo"?data.promos.find(function(x){return x.id===id}):{badge:"",title:"",detail:"",start:"",end:"",code:"",cond:"",img:"",product:""};
+    sheet({title:act==="add-promo"?"เพิ่มโปรโมชั่น":"แก้ไขโปรโมชั่น",values:s,fields:[{key:"img",label:"รูปโปรโมชั่น",type:"image",hint:"ถ้าไม่ใส่รูป จะแสดงข้อความเด่นบนแถบสีม่วงแทน"},{key:"badge",label:"ข้อความเด่น",ph:"ลด 20%"},{key:"title",label:"ชื่อโปรโมชั่น"},{key:"detail",label:"รายละเอียด",type:"textarea",rows:3},
+      {row:[{key:"start",label:"วันเริ่ม",type:"date"},{key:"end",label:"วันสิ้นสุด",type:"date"}]},{key:"product",label:"สินค้าที่ร่วมรายการ",type:"select",options:[["","ไม่ระบุ"]].concat(data.products.map(function(x){return[x.id,x.name]}))},
+      {key:"code",label:"โค้ดส่วนลด (ถ้ามี)"},{key:"cond",label:"เงื่อนไข",type:"textarea",rows:4,hint:FMT}],
+      validate:function(v){if(!v.title)return"กรุณาใส่ชื่อโปรโมชั่น";if(v.start&&v.end&&v.end<v.start)return"วันสิ้นสุดต้องไม่ก่อนวันเริ่ม";return""},
+      onSave:function(v){mutate(function(d){if(act==="add-promo"){v.id=uid("p");d.promos.unshift(v);ui.promoFilter="all"}else Object.assign(d.promos.find(function(y){return y.id===id}),v)})},
+      onDelete:act==="edit-promo"?function(){mutate(function(d){d.promos=d.promos.filter(function(y){return y.id!==id})})}:null});break;
+  case"move-promo":mutate(function(d){move(d.promos,d.promos.findIndex(function(y){return y.id===id}),+b.getAttribute("data-dir"))});break;
+  case"discard":data=clone(published);dirty=false;store(DRAFT,null);toast("ยกเลิกการแก้ไขแล้ว");render();break;
+  case"restore":try{data=JSON.parse(load(DRAFT));dirty=true;editing=true;render();toast("กู้คืนฉบับร่างแล้ว")}catch(err){store(DRAFT,null)}break;
+  case"publish":publish();break;
+  }
+});
+document.addEventListener("input",function(e){if(e.target.id==="q"){ui.q=e.target.value;renderGrid()}});
+
+function copy(t){
+  function ok(){toast("คัดลอกแล้ว: "+t)}
+  function fb(){var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();var done=false;try{done=document.execCommand("copy")}catch(e){}ta.remove();if(done)ok();else toast("คัดลอกไม่ได้ กดค้างที่โค้ดเพื่อคัดลอกเอง")}
+  try{navigator.clipboard.writeText(t).then(ok,fb)}catch(e){fb()}
+}
+var tt;
+function toast(m,ms){var o=document.querySelector(".toast");if(o)o.remove();var d=document.createElement("div");d.className="toast";d.setAttribute("role","status");d.textContent=m;document.body.appendChild(d);clearTimeout(tt);tt=setTimeout(function(){d.remove()},ms||2800)}
+
+/* ---------- publish: rebuild the whole page with the new data ---------- */
+function buildHTML(){
+  var hs=document.head&&document.head.querySelector("style");
+  var reset=hs?hs.textContent:":root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}";
+  var json=JSON.stringify(data).split("<").join(String.fromCharCode(92)+"u003c");
+  var SC="<"+"/script>";
+  var fonts='<link rel="preconnect" href="https://fonts.googleapis.com">\n<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anuphan:wght@500;600;700&family=IBM+Plex+Sans+Thai:wght@400;500;600&display=swap">';
+  return '<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>'+reset+"</style></head><body>"+
+    '<title>คู่มือศึกษาสินค้า SPR99</title>\n<meta name="claude:viewport-fit-sides" content="cover">\n'+fonts+"\n"+document.getElementById("page-style").outerHTML+
+    '\n<div id="app"></div>\n<script type="application/json" id="state">'+json+SC+"\n"+document.getElementById("app-js").outerHTML+"</body></html>";
+}
+function publish(){
+  if(!art||saving)return;
+  data.meta.updated=new Date().toISOString().slice(0,10);
+  saving=true;render();
+  art.publish(buildHTML()).then(function(){store(DRAFT,null);dirty=false;saving=false;published=clone(data);toast("เผยแพร่แล้ว ทุกคนจะเห็นข้อมูลใหม่");render()},
+  function(err){saving=false;var c=err&&err.code;
+    if(c==="conflict")toast("มีเวอร์ชันใหม่กว่าถูกบันทึกไปก่อน หน้าจะโหลดใหม่ ฉบับร่างของคุณยังเก็บไว้");
+    else if(c==="not_writer"||c==="not_granted"){canEdit=false;editing=false;dirty=false;toast("บัญชีนี้ดูได้อย่างเดียว แก้ไขไม่ได้")}
+    else if(c==="rate_limited")toast("บันทึกถี่เกินไป รอสักครู่แล้วลองใหม่");
+    else if(c==="too_large")toast("ข้อมูลใหญ่เกินไป ลองลดจำนวนรูปหรือข้อความ");
+    else toast("บันทึกไม่สำเร็จ ลองกดบันทึกอีกครั้ง");
+    render()});
+}
+
+/* ---------- boot ---------- */
+render();
+(function(){
+  if(!window.claude||typeof window.claude.use!=="function")return;
+  Promise.all([window.claude.use("user"),window.claude.use("artifact"),window.claude.use("assets")]).then(function(r){
+    var u=r[0];art=r[1];assets=r[2];
+    if(!u||!art)return;
+    return u.canEdit().then(function(ok){
+      if(!ok)return;
+      canEdit=true;
+      var d=load(DRAFT);
+      render();
+      if(d&&d!==JSON.stringify(published)){
+        var n=document.createElement("div");n.className="editbar";n.style.marginBottom="16px";n.style.alignItems="center";
+        n.innerHTML='<span style="flex:1;font-weight:500;color:var(--accent-ink)">มีฉบับร่างที่ยังไม่ได้เผยแพร่ค้างไว้</span><button class="btn btn-primary btn-sm" data-act="restore">กู้คืน</button>';
+        var w=app.querySelector("main .wrap");if(w)w.prepend(n);
+      }else store(DRAFT,null);
+    });
+  }).catch(function(){});
+})();
+})();
+</script>
